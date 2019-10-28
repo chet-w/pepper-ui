@@ -22,23 +22,20 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${p => p.theme.spacing.unit * 3}px;
-  background: linear-gradient(to right, ${props => props.theme.palette.primary}, ${props => props.theme.palette.darkPrimary});
+  background: linear-gradient(
+    to right,
+    ${props => props.theme.palette.primary},
+    ${props => props.theme.palette.darkPrimary}
+  );
 `
 
-export default ({ data, location }: IndexPageProps) => {
-  const { image, site } = data
+export default ({ location }: IndexPageProps) => {
   return (
     <Layout location={location}>
       <Wrapper>
-        <Heading
-          title="Pepper"
-          subtitle="A new flavour for User Interfaces"
-        />
-        <Link to="/buttons">
-          Buttons
-        </Link>
+        <Heading title="Pepper" subtitle="A new flavour for User Interfaces" />
+        <Link to="/buttons">Buttons</Link>
       </Wrapper>
     </Layout>
   )
 }
-
