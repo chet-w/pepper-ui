@@ -9,6 +9,16 @@ const StyledSidebar = styled.aside`
   height: 100%;
   background: ${props => props.theme.palette.white};
   padding: 20px;
+
+  & ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  & li {
+    /* border-bottom: solid 1px ${props => props.theme.palette.lightGrey}; */
+    padding: 5px;
+  }
 `
 
 const Sidebar: React.FC<Props> = () => {

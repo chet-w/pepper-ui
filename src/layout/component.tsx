@@ -1,9 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-// Layout
-import Layout from '../layout/index'
-
 // Components
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
@@ -23,18 +20,10 @@ const Wrapper = styled.div`
   justify-content: center;
 `
 
-interface ButtonPageProps {
-  location: {
-    pathname: string
-  }
-}
-
-export default ({ location }: ButtonPageProps) => (
-  <Layout location={location}>
-    <Wrapper>
-      <Header />
-      <Sidebar />
-      <PageContent>this is content</PageContent>
-    </Wrapper>
-  </Layout>
+export default ({ children }: any) => (
+  <Wrapper>
+    <Header />
+    <Sidebar />
+    <PageContent>{children}</PageContent>
+  </Wrapper>
 )

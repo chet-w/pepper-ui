@@ -34,7 +34,7 @@ export default ({ location }: IndexPageProps) => {
     <Layout location={location}>
       <Wrapper>
         <Heading title="Pepper" subtitle="A new flavour for User Interfaces" />
-        <Link to="/buttons">Buttons</Link>
+        <Link to="/components/buttons">Buttons</Link>
       </Wrapper>
     </Layout>
   )
