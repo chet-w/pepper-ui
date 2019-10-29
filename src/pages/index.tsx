@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
+import Pattern from '../images/tic-tac-toe.svg'
 import styled from 'styled-components'
 
 // Layout
@@ -22,11 +23,12 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${p => p.theme.spacing.unit * 3}px;
-  background: linear-gradient(
-    to right,
-    ${props => props.theme.palette.primary},
-    ${props => props.theme.palette.darkPrimary}
-  );
+  background: url(${Pattern}),
+    linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
 `
 
 export default ({ location }: IndexPageProps) => {

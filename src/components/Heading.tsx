@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   margin-top: 30px;
+  filter: drop-shadow(2px 2px 3px black);
 `
 
 const Subtitle = styled.p``

@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-const Button = styled.button`
+interface ButtonProps {
+  type: string
+  rounded?: boolean
+}
+
+const Button = styled.button<ButtonProps>`
   position: relative;
   padding: 10px 15px;
   border-radius: 8px;
