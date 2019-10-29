@@ -9,6 +9,21 @@ const StyledSidebar = styled.aside`
   height: 100%;
   background: ${props => props.theme.palette.white};
   padding: 20px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 80%;
+    left: 100%;
+    top: 10%;
+    width: 2px;
+    background: linear-gradient(
+    to bottom,
+    ${props => props.theme.palette.primary},
+    ${props => props.theme.palette.darkPrimary}
+  );
+  }
 
   & ul {
     list-style: none;

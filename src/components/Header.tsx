@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Container from '../components/Container'
 
 const StyledHeader = styled.header`
   height: 80px;
@@ -24,7 +25,9 @@ interface Props {}
 const Header: React.FC<Props> = () => {
   return (
     <StyledHeader>
-      <h2>Buttons</h2>
+      <Container>
+        <h2>Buttons</h2>
+      </Container>
     </StyledHeader>
   )
 }

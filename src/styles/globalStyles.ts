@@ -1,10 +1,23 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
+  @font-face {
+    font-family: 'Operator Mono Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Operator Mono Book'), url('../fonts/OperatorMono-Book.woff') format('woff');
+}
+@font-face {
+    font-family: 'Operator Mono Book Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Operator Mono Book Italic'), url('../fonts/OperatorMono-BookItalic.woff') format('woff');
+}
+
   body{
     -webkit-font-smoothing: antialiased;
     margin: 0;
-    background: #FBFBFB; 
+    background: #FFFFFF; 
   }
 
   a {
@@ -31,5 +44,9 @@ export default createGlobalStyle`
         width: 100%;
       }
     }
+  }
+
+  p {
+    max-width: 50pc;
   }
 `
