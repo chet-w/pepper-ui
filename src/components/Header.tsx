@@ -24,6 +24,10 @@ const StyledHeader = styled.header`
 
   & h2 {
     margin-bottom: 0;
+
+    a::after {
+      content: none;
+    }
   }
 
   & nav {
@@ -34,6 +38,10 @@ const StyledHeader = styled.header`
 
   a {
     color: white;
+
+    ::after {
+      background: white;
+    }
   }
 `
 
@@ -43,7 +51,9 @@ const Header: React.FC<Props> = () => {
   return (
     <StyledHeader>
       <Container>
-        <h2>Pepper UI</h2>
+        <h2>
+          <Link to="/">Pepper UI</Link>
+        </h2>
         <nav>
           <div>Search</div>
           <Link to="/components">Components</Link>

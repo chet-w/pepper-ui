@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import Pattern from '../images/tic-tac-toe.svg'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 // Layout
 import Layout from '../layout/index'
@@ -14,6 +14,17 @@ interface IndexPageProps {
     pathname: string
   }
 }
+
+const MoveBackground = keyframes`
+  0% {
+    background-position-x: 0, 0;
+    background-position-y: 0, 0;
+  }
+  100% {
+    background-position-x: 380px, 0;
+    background-position-y: 380px, 0;
+  }
+`
 
 const Wrapper = styled.div`
   width: 100%;
@@ -29,6 +40,9 @@ const Wrapper = styled.div`
       ${props => props.theme.palette.primary},
       ${props => props.theme.palette.darkPrimary}
     );
+  background-size: 60%, 100%;
+  /* background-position-x: 384px, 0; */
+  animation: ${MoveBackground} 12s linear infinite;
 `
 
 export default ({ location }: IndexPageProps) => {
