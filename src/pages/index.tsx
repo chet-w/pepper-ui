@@ -8,6 +8,7 @@ import Layout from '../layout/index'
 
 // Components
 import Heading from '../components/Heading'
+import { Button } from '../pepper-components/Button'
 
 interface IndexPageProps {
   location: {
@@ -50,7 +51,9 @@ export default ({ location }: IndexPageProps) => {
     <Layout location={location}>
       <Wrapper>
         <Heading title="Pepper" subtitle="A new flavour for User Interfaces" />
-        <Link to="/components/buttons">Buttons</Link>
+        <Link to="/components/buttons">
+          <Button type="secondary">Buttons</Button>
+        </Link>
       </Wrapper>
     </Layout>
   )
