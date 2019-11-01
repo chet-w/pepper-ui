@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from '../components/Container'
-import Pattern from '../images/tic-tac-toe.svg'
 import { Link } from 'gatsby'
+
+const Pattern = require('../images/tic-tac-toe.svg')
 
 const StyledHeader = styled.header`
   height: 80px;
