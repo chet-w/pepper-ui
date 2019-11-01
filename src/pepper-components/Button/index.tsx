@@ -1,10 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-
-interface ButtonProps {
-  type: string
-  rounded?: boolean
-}
+import styled, { ThemedStyledFunction } from 'styled-components'
 
 const BaseButton = styled.button`
   position: relative;
@@ -68,16 +63,44 @@ const SecondaryButton = styled(BaseButton)`
   }
 `
 
-const Button = props => {
+const TertiaryButton = styled(BaseButton)`
+  background: none;
+  border: none;
+  color: ${props => props.theme.palette.darkPrimary};
+
+  :hover {
+    color: ${props => props.theme.palette.primary};
+  }
+`
+
+const GhostButton = styled(BaseButton)`
+  background: none;
+  border: solid 2px ${props => props.theme.palette.white};
+  color: ${props => props.theme.palette.white};
+
+  :hover {
+    color: ${props => props.theme.palette.primary};
+    border: solid 2px ${props => props.theme.palette.primary};
+  }
+`
+
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  readonly type: string
+  readonly children?: any
+}
+
+const Button: React.FC<ButtonProps> = props => {
   const { type, children, ...otherProps } = props
 
-  return props.type === 'primary' ? (
+  return type === 'primary' ? (
     <PrimaryButton {...otherProps}>{children}</PrimaryButton>
-  ) : props.type === 'secondary' ? (
+  ) : type === 'secondary' ? (
     <SecondaryButton {...otherProps}>{children}</SecondaryButton>
-  ) : (
-    'Error'
-  )
+  ) : type === 'tertiary' ? (
+    <TertiaryButton {...otherProps}>{children}</TertiaryButton>
+  ) : type === 'ghost' ? (
+    <GhostButton {...otherProps}>{children}</GhostButton>
+  ) : null
 }
 
 export { Button }

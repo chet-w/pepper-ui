@@ -29,6 +29,9 @@ export default ({ location }: ButtonPageProps) => (
           <p>Used to indicate your main action on the page or component.</p>
           <div>
             <Button type="primary">I'm important</Button>
+            <Button type="secondary">I'm a bit less important</Button>
+            <Button type="tertiary">I'm even less important</Button>
+            <Button type="ghost">I'm good on colored backgrounds</Button>
           </div>
         </article>
       </section>
