@@ -84,9 +84,15 @@ const GhostButton = styled(BaseButton)`
   }
 `
 
+type TypeOptions = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger'
+
+type ShapeOptions = 'rounded' | 'pills' | 'circle'
+
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  readonly type: string
-  readonly children?: any
+  type: TypeOptions
+  shape: ShapeOptions
+  disabled?: boolean
+  children?: any
 }
 
 const Button: React.FC<ButtonProps> = props => {

@@ -32,7 +32,7 @@ const StyledHeader = styled.header`
 
   & nav {
     display: flex;
-    width: 300px;
+    width: 350px;
     justify-content: space-between;
   }
 
@@ -56,6 +56,7 @@ const Header: React.FC<Props> = () => {
         </h2>
         <nav>
           <div>Search</div>
+          <Link to="/about">About</Link>
           <Link to="/components">Components</Link>
           <Link to="/contributing">Contributing</Link>
         </nav>

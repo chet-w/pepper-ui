@@ -28,10 +28,18 @@ export default ({ location }: ButtonPageProps) => (
           <H2>Primary</H2>
           <p>Used to indicate your main action on the page or component.</p>
           <div>
-            <Button type="primary">I'm important</Button>
-            <Button type="secondary">I'm a bit less important</Button>
-            <Button type="tertiary">I'm even less important</Button>
-            <Button type="ghost">I'm good on colored backgrounds</Button>
+            <Button type="primary" shape="rounded">
+              I'm important
+            </Button>
+            <Button type="secondary" shape="rounded">
+              I'm a bit less important
+            </Button>
+            <Button type="tertiary" shape="rounded">
+              I'm even less important
+            </Button>
+            <Button type="ghost" shape="rounded">
+              I'm good on colored backgrounds
+            </Button>
           </div>
         </article>
       </section>
