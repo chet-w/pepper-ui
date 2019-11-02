@@ -49,4 +49,8 @@ export default createGlobalStyle`
   p {
     max-width: 50pc;
   }
+
+  code {
+    font-family: "Operator Mono Book", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
+  }
 `

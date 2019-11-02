@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vsDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 // Layout
 import Layout from '../../layout/index'
@@ -42,6 +44,15 @@ export default ({ location }: ButtonPageProps) => (
             </Button>
           </div>
         </article>
+        <SyntaxHighlighter language="jsx" style={theme}>
+          {`import { Button } from 'pepper-ui'
+
+const MyComponent = () => (
+  <div>
+    This is my button <Button type="primary" shape="rounded">Click me</Button>
+  </div>
+)`}
+        </SyntaxHighlighter>
       </section>
     </ComponentLayout>
   </Layout>
