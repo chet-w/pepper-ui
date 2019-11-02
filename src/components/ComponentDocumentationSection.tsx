@@ -15,6 +15,10 @@ const Component = styled.li`
   margin-right: 20px;
 `
 
+const Wrapper = styled.article`
+  margin-bottom: 30px;
+`
+
 interface Props {
   title: string
   description: string
@@ -25,7 +29,7 @@ interface Props {
 const ComponentDocumentationSection: React.FC<Props> = props => {
   const { title, description, demoComponents, code } = props
   return (
-    <article>
+    <Wrapper>
       <H2>{title}</H2>
       <p>{description}</p>
       <ComponentList>
@@ -36,7 +40,7 @@ const ComponentDocumentationSection: React.FC<Props> = props => {
       <SyntaxHighlighter language="jsx" style={theme}>
         {code}
       </SyntaxHighlighter>
-    </article>
+    </Wrapper>
   )
 }
 
