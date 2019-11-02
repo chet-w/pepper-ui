@@ -1,13 +1,20 @@
 import React from 'react'
-import styled, { ThemedStyledFunction } from 'styled-components'
+import styled from 'styled-components'
+import { ITheme } from '../../styles/theme'
 
 const BaseButton = styled.button`
   position: relative;
   padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: ${(props: StyledButtonProps) =>
+    props.shape === 'pills' || props.shape === 'circle' ? '30px' : '8px'};
   cursor: pointer;
   transition: all 0.15s ease;
+  background: transparent;
   z-index: 1;
+  height: ${(props: StyledButtonProps) =>
+    props.shape === 'circle' ? `${props.theme.fontSize * 3}px` : 'auto'};
+  width: ${(props: StyledButtonProps) =>
+    props.shape === 'circle' ? `${props.theme.fontSize * 3}px` : 'auto'};
 
   &::before {
     position: absolute;
@@ -16,10 +23,12 @@ const BaseButton = styled.button`
     right: 0;
     bottom: 0;
     left: 0;
-    border-radius: 5px;
+    border-radius: ${props =>
+      props.shape === 'pills' || props.shape === 'circle' ? '30px' : '5px'};
     z-index: -1;
     transition: opacity 0.15s linear;
     opacity: 0;
+    background: transparent;
   }
 
   &:hover::before {
@@ -37,7 +46,7 @@ const PrimaryButton = styled(BaseButton)`
   color: white;
 
   &::before {
-    background: linear-gradient(to right, white, white);
+    background: ${props => props.theme.palette.white};
   }
 
   &:hover {
@@ -47,7 +56,7 @@ const PrimaryButton = styled(BaseButton)`
 
 const SecondaryButton = styled(BaseButton)`
   border: solid 2px ${props => props.theme.palette.primary};
-  background: white;
+  background: ${props => props.theme.palette.white};
   color: ${props => props.theme.palette.darkPrimary};
 
   &::before {
@@ -84,9 +93,34 @@ const GhostButton = styled(BaseButton)`
   }
 `
 
+const DangerButton = styled(BaseButton)`
+  color: ${props => props.theme.palette.white};
+  border: 2px solid #93291e;
+
+  &::before {
+    background: linear-gradient(to right, #ed213a, #93291e);
+    opacity: 1;
+  }
+
+  &:hover {
+    color: #93291e;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+`
+
 type TypeOptions = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger'
 
 type ShapeOptions = 'rounded' | 'pills' | 'circle'
+
+interface StyledButtonProps {
+  type: TypeOptions
+  shape: ShapeOptions
+  disabled?: boolean
+  theme: ITheme
+}
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   type: TypeOptions
@@ -99,14 +133,26 @@ const Button: React.FC<ButtonProps> = props => {
   const { type, children, ...otherProps } = props
 
   return type === 'primary' ? (
-    <PrimaryButton {...otherProps}>{children}</PrimaryButton>
+    <PrimaryButton type={type} {...otherProps}>
+      {children}
+    </PrimaryButton>
   ) : type === 'secondary' ? (
-    <SecondaryButton {...otherProps}>{children}</SecondaryButton>
+    <SecondaryButton type={type} {...otherProps}>
+      {children}
+    </SecondaryButton>
   ) : type === 'tertiary' ? (
-    <TertiaryButton {...otherProps}>{children}</TertiaryButton>
+    <TertiaryButton type={type} {...otherProps}>
+      {children}
+    </TertiaryButton>
   ) : type === 'ghost' ? (
-    <GhostButton {...otherProps}>{children}</GhostButton>
-  ) : null
+    <GhostButton type={type} {...otherProps}>
+      {children}
+    </GhostButton>
+  ) : (
+    <DangerButton type={type} {...otherProps}>
+      {children}
+    </DangerButton>
+  )
 }
 
 export { Button }

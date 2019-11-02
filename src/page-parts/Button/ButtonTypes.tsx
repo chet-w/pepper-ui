@@ -30,6 +30,9 @@ const ButtonTypes: React.FC<Props> = () => {
             Ghost
           </Button>
         </div>,
+        <Button type="danger" shape="rounded">
+          Danger
+        </Button>,
       ]}
       code={`import { Button } from 'pepper-ui
 

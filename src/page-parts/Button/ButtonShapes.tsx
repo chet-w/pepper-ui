@@ -16,7 +16,7 @@ const ButtonShapes: React.FC<Props> = () => (
         Pills
       </Button>,
       <Button type="primary" shape="circle">
-        Circle
+        x
       </Button>,
     ]}
     code={`import { Button } from 'pepper-ui

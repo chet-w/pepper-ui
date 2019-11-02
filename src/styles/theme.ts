@@ -10,6 +10,7 @@ export interface ITheme {
   spacing: {
     unit: number
   }
+  fontSize: number
 }
 
 const mainTheme = {
@@ -22,6 +23,7 @@ const mainTheme = {
   spacing: {
     unit: 8,
   },
+  fontSize: 16,
 }
 
 export default mainTheme
