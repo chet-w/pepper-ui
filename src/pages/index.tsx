@@ -1,14 +1,15 @@
 import * as React from 'react'
-import { graphql, Link } from 'gatsby'
-import Pattern from '../images/tic-tac-toe.svg'
+import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
+
+const Pattern = require('../images/tic-tac-toe.svg')
 
 // Layout
 import Layout from '../layout/index'
 
 // Components
-import Heading from '../components/Heading'
 import { Button } from '../pepper-components/Button'
+import { H1, H3 } from '../pepper-components/Headings'
 
 interface IndexPageProps {
   location: {
@@ -44,16 +45,36 @@ const Wrapper = styled.div`
   background-size: 60%, 100%;
   /* background-position-x: 384px, 0; */
   animation: ${MoveBackground} 12s linear infinite;
+
+  & ${H1}, ${H3} {
+    color: ${props => props.theme.palette.white};
+  }
+`
+
+const Buttons = styled.section`
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
 `
 
 export default ({ location }: IndexPageProps) => {
   return (
     <Layout location={location}>
       <Wrapper>
-        <Heading title="Pepper" subtitle="A new flavour for User Interfaces" />
-        <Link to="/components/buttons">
-          <Button type="secondary">Buttons</Button>
-        </Link>
+        <H1>Pepper</H1>
+        <H3>A new flavour for User Interfaces</H3>
+        <Buttons>
+          <Link to="/components/buttons">
+            <Button type="secondary" shape="rounded">
+              Components
+            </Button>
+          </Link>
+          <Link to="/components/buttons">
+            <Button type="ghost" shape="rounded">
+              Usage
+            </Button>
+          </Link>
+        </Buttons>
       </Wrapper>
     </Layout>
   )
