@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ITheme } from '../../styles/theme'
 import Spinner from '../Spinner/index'
 import { Pulse } from '../Animations/index'
+import { ReactNode } from 'react'
 
 const BaseButton = styled.button`
   position: relative;
@@ -122,17 +123,31 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   shape: ShapeOptions
   loading?: boolean
   disabled?: boolean
+  icon?: ReactNode
+  showLoadingContent?: boolean
+  loadingContent?: ReactNode | string
   children?: any
 }
 
 const Button: React.FC<ButtonProps> = props => {
-  const { type, loading, children, disabled, ...otherProps } = props
+  const {
+    type,
+    loading,
+    children,
+    disabled,
+    icon,
+    showLoadingContent,
+    loadingContent,
+    ...otherProps
+  } = props
 
-  const ButtonContent = (
+  const ButtonContent = loading ? (
     <>
-      {loading && <Spinner />}
-      {children}
+      <Spinner />
+      {showLoadingContent && loadingContent ? loadingContent : children}
     </>
+  ) : (
+    children
   )
 
   return type === 'primary' ? (

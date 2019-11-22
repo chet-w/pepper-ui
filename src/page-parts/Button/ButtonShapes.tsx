@@ -23,7 +23,7 @@ const ButtonShapes: React.FC<Props> = () => (
         &#10060;
       </Button>,
     ]}
-    code={`import { Button } from 'pepper-ui
+    code={`import { Button } from 'pepper-ui'
 
 const MyComponent = () => (
   <div>

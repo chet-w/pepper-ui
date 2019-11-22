@@ -37,7 +37,7 @@ const ButtonTypes: React.FC<Props> = () => {
           Disabled
         </Button>,
       ]}
-      code={`import { Button } from 'pepper-ui
+      code={`import { Button } from 'pepper-ui'
 
 const MyComponent = () => (
   <div>

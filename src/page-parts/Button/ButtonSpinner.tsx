@@ -25,18 +25,34 @@ const ButtonSpinner: React.FC<Props> = () => {
           loading={isLoading}
           onClick={() => setLoading(true)}
         >
-          Loading
+          Static text
+        </Button>,
+        <Button
+          type="primary"
+          shape="rounded"
+          loading={isLoading}
+          onClick={() => setLoading(true)}
+          showLoadingContent
+          loadingContent="🤔"
+        >
+          Dynamic text
         </Button>,
       ]}
-      code={`import { Button } from 'pepper-ui
+      code={`import { Button } from 'pepper-ui'
 
 const MyComponent = () => (
   <div>
-    This is the default shape:
-    <Button type="primary" shape="rounded">I'm rounded</Button>
-
-    But you can set a shape manually too:
-    <Button type="primary" shape="pills">I'm pills</Button>
+    This is the button that changes text when loading:
+    <Button
+      type="primary"
+      shape="rounded"
+      loading={isLoading}
+      onClick={() => setLoading(true)}
+      showLoadingContent
+      loadingContent="🤔"
+    >
+      Dynamic text
+    </Button>
   </div>
 )
         `}
