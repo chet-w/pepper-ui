@@ -9,6 +9,7 @@ import Layout from '../../layout/index'
 import ComponentLayout from '../../layout/component'
 
 import { H1 } from '../../pepper-components/Headings/index'
+import ButtonSpinner from '../../page-parts/Button/ButtonSpinner'
 
 interface ButtonPageProps {
   location: {
@@ -26,6 +27,7 @@ export default ({ location }: ButtonPageProps) => (
       </p>
       <ButtonTypes />
       <ButtonShapes />
+      <ButtonSpinner />
     </ComponentLayout>
   </Layout>
 )

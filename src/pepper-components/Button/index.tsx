@@ -1,38 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ITheme } from '../../styles/theme'
+import Spinner from '../Spinner/index'
+import { Pulse } from '../Animations/index'
 
 const BaseButton = styled.button`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 15px;
   border-radius: ${(props: StyledButtonProps) =>
     props.shape === 'pills' || props.shape === 'circle' ? '30px' : '8px'};
   cursor: pointer;
   transition: all 0.15s ease;
   background: transparent;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
   z-index: 1;
   height: ${(props: StyledButtonProps) =>
     props.shape === 'circle' ? `${props.theme.fontSize * 3}px` : 'auto'};
   width: ${(props: StyledButtonProps) =>
     props.shape === 'circle' ? `${props.theme.fontSize * 3}px` : 'auto'};
 
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: ${props =>
-      props.shape === 'pills' || props.shape === 'circle' ? '30px' : '5px'};
-    z-index: -1;
-    transition: opacity 0.15s linear;
-    opacity: 0;
-    background: transparent;
-  }
-
-  &:hover::before {
-    opacity: 1;
+  &:focus {
+    animation: ${Pulse} ease 1s forwards;
+    outline: none;
   }
 `
 
@@ -45,12 +37,9 @@ const PrimaryButton = styled(BaseButton)`
   );
   color: white;
 
-  &::before {
-    background: ${props => props.theme.palette.white};
-  }
-
-  &:hover {
-    color: ${props => props.theme.palette.darkPrimary};
+  &:hover,
+  &:focus {
+    filter: brightness(1.2);
   }
 `
 
@@ -59,16 +48,9 @@ const SecondaryButton = styled(BaseButton)`
   background: ${props => props.theme.palette.white};
   color: ${props => props.theme.palette.darkPrimary};
 
-  &::before {
-    background: linear-gradient(
-      to right,
-      ${props => props.theme.palette.primary},
-      ${props => props.theme.palette.darkPrimary}
-    );
-  }
-
-  &:hover {
-    color: white;
+  &:hover,
+  &:focus {
+    filter: brightness(0.95);
   }
 `
 
@@ -77,8 +59,9 @@ const TertiaryButton = styled(BaseButton)`
   border: none;
   color: ${props => props.theme.palette.darkPrimary};
 
-  :hover {
-    color: ${props => props.theme.palette.primary};
+  &:hover,
+  &:focus {
+    filter: brightness(1.2);
   }
 `
 
@@ -95,19 +78,12 @@ const GhostButton = styled(BaseButton)`
 
 const DangerButton = styled(BaseButton)`
   color: ${props => props.theme.palette.white};
+  background: linear-gradient(to right, #ed213a, #93291e);
   border: 2px solid #93291e;
 
-  &::before {
-    background: linear-gradient(to right, #ed213a, #93291e);
-    opacity: 1;
-  }
-
-  &:hover {
-    color: #93291e;
-
-    &::before {
-      opacity: 0;
-    }
+  &:hover,
+  &:focus {
+    filter: brightness(1.2);
   }
 `
 
@@ -125,32 +101,40 @@ interface StyledButtonProps {
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   type: TypeOptions
   shape: ShapeOptions
+  loading?: boolean
   disabled?: boolean
   children?: any
 }
 
 const Button: React.FC<ButtonProps> = props => {
-  const { type, children, ...otherProps } = props
+  const { type, loading, children, ...otherProps } = props
+
+  const ButtonContent = (
+    <>
+      {loading && <Spinner />}
+      {children}
+    </>
+  )
 
   return type === 'primary' ? (
     <PrimaryButton type={type} {...otherProps}>
-      {children}
+      {ButtonContent}
     </PrimaryButton>
   ) : type === 'secondary' ? (
     <SecondaryButton type={type} {...otherProps}>
-      {children}
+      {ButtonContent}
     </SecondaryButton>
   ) : type === 'tertiary' ? (
     <TertiaryButton type={type} {...otherProps}>
-      {children}
+      {ButtonContent}
     </TertiaryButton>
   ) : type === 'ghost' ? (
     <GhostButton type={type} {...otherProps}>
-      {children}
+      {ButtonContent}
     </GhostButton>
   ) : (
     <DangerButton type={type} {...otherProps}>
-      {children}
+      {ButtonContent}
     </DangerButton>
   )
 }

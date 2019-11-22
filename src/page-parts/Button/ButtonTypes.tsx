@@ -39,7 +39,7 @@ const ButtonTypes: React.FC<Props> = () => {
 const MyComponent = () => (
   <div>
     This is a primary button:
-    <Button type="primary" shape="rounded">I'm a important</Button>
+    <Button type="primary" shape="rounded">I'm important</Button>
   </div>
 )
         `}
