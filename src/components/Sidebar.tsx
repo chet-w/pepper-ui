@@ -36,6 +36,11 @@ const StyledSidebar = styled.aside`
   }
 `
 
+const SidebarContent = styled.div`
+  position: sticky;
+  top: 20px;
+`
+
 const Sidebar: React.FC<Props> = () => {
   const menuItems = [
     {
@@ -72,18 +77,20 @@ const Sidebar: React.FC<Props> = () => {
 
   return (
     <StyledSidebar>
-      {menuItems.map(item => (
-        <>
-          <h4>{item.section}</h4>
-          <ul>
-            {item.children.map(child => (
-              <li>
-                <Link to={child.path}>{child.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      ))}
+      <SidebarContent>
+        {menuItems.map(item => (
+          <>
+            <h4>{item.section}</h4>
+            <ul>
+              {item.children.map(child => (
+                <li>
+                  <Link to={child.path}>{child.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))}
+      </SidebarContent>
     </StyledSidebar>
   )
 }

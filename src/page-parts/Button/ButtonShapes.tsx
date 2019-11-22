@@ -15,8 +15,12 @@ const ButtonShapes: React.FC<Props> = () => (
       <Button type="primary" shape="pills">
         Pills
       </Button>,
-      <Button type="primary" shape="circle">
-        x
+      <Button
+        type="primary"
+        shape="circle"
+        style={{ color: 'transparent', textShadow: '0 0 0 white' }}
+      >
+        &#10060;
       </Button>,
     ]}
     code={`import { Button } from 'pepper-ui
