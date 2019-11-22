@@ -29,6 +29,17 @@ const BaseButton = styled.button`
     outline: none;
   }
 
+  &:disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    cursor: not-allowed;
+
+    &:hover {
+      filter: brightness(1);
+    }
+  }
+
   & ${Spinner} {
     position: absolute;
     left: 1em;
@@ -115,7 +126,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = props => {
-  const { type, loading, children, ...otherProps } = props
+  const { type, loading, children, disabled, ...otherProps } = props
 
   const ButtonContent = (
     <>
@@ -125,23 +136,48 @@ const Button: React.FC<ButtonProps> = props => {
   )
 
   return type === 'primary' ? (
-    <PrimaryButton type={type} loading={loading} {...otherProps}>
+    <PrimaryButton
+      type={type}
+      loading={loading}
+      disabled={loading || disabled}
+      {...otherProps}
+    >
       {ButtonContent}
     </PrimaryButton>
   ) : type === 'secondary' ? (
-    <SecondaryButton type={type} loading={loading} {...otherProps}>
+    <SecondaryButton
+      type={type}
+      loading={loading}
+      disabled={loading || disabled}
+      {...otherProps}
+    >
       {ButtonContent}
     </SecondaryButton>
   ) : type === 'tertiary' ? (
-    <TertiaryButton type={type} loading={loading} {...otherProps}>
+    <TertiaryButton
+      type={type}
+      loading={loading}
+      disabled={loading || disabled}
+      {...otherProps}
+    >
       {ButtonContent}
     </TertiaryButton>
   ) : type === 'ghost' ? (
-    <GhostButton type={type} loading={loading} {...otherProps}>
+    <GhostButton
+      type={type}
+      loading={loading}
+      disabled={loading || disabled}
+      {...otherProps}
+    >
       {ButtonContent}
     </GhostButton>
   ) : (
-    <DangerButton type={type} loading={loading} {...otherProps}>
+    <DangerButton
+      type={type}
+      loading={loading}
+      disabled={loading || disabled}
+      {...otherProps}
+    >
       {ButtonContent}
     </DangerButton>
   )
