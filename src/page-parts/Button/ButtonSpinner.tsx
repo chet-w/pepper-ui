@@ -6,11 +6,15 @@ import { useEffect } from 'react'
 interface Props {}
 
 const ButtonSpinner: React.FC<Props> = () => {
-  const [isLoading, setLoading] = useState(false)
+  const [isFirstLoading, setFirstLoading] = useState(false)
+  const [isSecondLoading, setSecondLoading] = useState(false)
 
   useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => setLoading(false), 3000)
+    if (isFirstLoading) {
+      setTimeout(() => setFirstLoading(false), 3000)
+    }
+    if (isSecondLoading) {
+      setTimeout(() => setSecondLoading(false), 3000)
     }
   })
 
@@ -22,16 +26,16 @@ const ButtonSpinner: React.FC<Props> = () => {
         <Button
           type="primary"
           shape="rounded"
-          loading={isLoading}
-          onClick={() => setLoading(true)}
+          loading={isFirstLoading}
+          onClick={() => setFirstLoading(true)}
         >
           Static text
         </Button>,
         <Button
           type="primary"
           shape="rounded"
-          loading={isLoading}
-          onClick={() => setLoading(true)}
+          loading={isSecondLoading}
+          onClick={() => setSecondLoading(true)}
           showLoadingContent
           loadingContent="🤔"
         >

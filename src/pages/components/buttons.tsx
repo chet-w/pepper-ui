@@ -10,6 +10,8 @@ import ComponentLayout from '../../layout/component'
 
 import { H1 } from '../../pepper-components/Headings/index'
 import ButtonSpinner from '../../page-parts/Button/ButtonSpinner'
+import ButtonIcons from '../../page-parts/Button/ButtonIcons'
+import APITable from '../../components/APITable'
 
 interface ButtonPageProps {
   location: {
@@ -27,7 +29,24 @@ export default ({ location }: ButtonPageProps) => (
       </p>
       <ButtonTypes />
       <ButtonShapes />
+      <ButtonIcons />
       <ButtonSpinner />
+      <APITable
+        header={['Prop', 'Description', 'Type', 'Options', 'Default']}
+        data={[
+          {
+            prop: 'type',
+            desc: 'The importance level or style of the button',
+            type: 'string',
+            options: 'primary, secondary, tertiary, ghost, danger, disabled',
+            default: 'primary',
+          },
+          { prop: '', desc: '', type: '', options: '', default: '' },
+          { prop: '', desc: '', type: '', options: '', default: '' },
+          { prop: '', desc: '', type: '', options: '', default: '' },
+          { prop: '', desc: '', type: '', options: '', default: '' },
+        ]}
+      />
     </ComponentLayout>
   </Layout>
 )
