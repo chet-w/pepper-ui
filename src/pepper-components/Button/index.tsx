@@ -10,6 +10,8 @@ const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px 15px;
+  padding-left: ${(props: StyledButtonProps) =>
+    props.loading ? '40px' : '15px'};
   border-radius: ${(props: StyledButtonProps) =>
     props.shape === 'pills' || props.shape === 'circle' ? '30px' : '8px'};
   cursor: pointer;
@@ -25,6 +27,11 @@ const BaseButton = styled.button`
   &:focus {
     animation: ${Pulse} ease 1s forwards;
     outline: none;
+  }
+
+  & ${Spinner} {
+    position: absolute;
+    left: 1em;
   }
 `
 
@@ -94,6 +101,7 @@ type ShapeOptions = 'rounded' | 'pills' | 'circle'
 interface StyledButtonProps {
   type: TypeOptions
   shape: ShapeOptions
+  loading?: boolean
   disabled?: boolean
   theme: ITheme
 }
@@ -117,23 +125,23 @@ const Button: React.FC<ButtonProps> = props => {
   )
 
   return type === 'primary' ? (
-    <PrimaryButton type={type} {...otherProps}>
+    <PrimaryButton type={type} loading={loading} {...otherProps}>
       {ButtonContent}
     </PrimaryButton>
   ) : type === 'secondary' ? (
-    <SecondaryButton type={type} {...otherProps}>
+    <SecondaryButton type={type} loading={loading} {...otherProps}>
       {ButtonContent}
     </SecondaryButton>
   ) : type === 'tertiary' ? (
-    <TertiaryButton type={type} {...otherProps}>
+    <TertiaryButton type={type} loading={loading} {...otherProps}>
       {ButtonContent}
     </TertiaryButton>
   ) : type === 'ghost' ? (
-    <GhostButton type={type} {...otherProps}>
+    <GhostButton type={type} loading={loading} {...otherProps}>
       {ButtonContent}
     </GhostButton>
   ) : (
-    <DangerButton type={type} {...otherProps}>
+    <DangerButton type={type} loading={loading} {...otherProps}>
       {ButtonContent}
     </DangerButton>
   )

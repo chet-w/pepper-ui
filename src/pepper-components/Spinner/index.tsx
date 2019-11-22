@@ -2,9 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { SpinInfinite } from '../Animations'
 
-interface Props {}
-
-const StyledSpinner = styled.span`
+const Spinner = styled.span`
   height: 1em;
   width: 1em;
   display: inline-block;
@@ -16,9 +14,5 @@ const StyledSpinner = styled.span`
   margin-right: 5px;
   animation: ${SpinInfinite} linear 0.5s infinite;
 `
-
-const Spinner: React.FC<Props> = () => {
-  return <StyledSpinner />
-}
 
 export default Spinner
