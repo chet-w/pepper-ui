@@ -51,8 +51,53 @@ const Sidebar: React.FC<Props> = () => {
           path: '/components/buttons',
         },
         {
+          name: 'Icons',
+          path: '/components/icons',
+        },
+        {
           name: 'Headings',
           path: '/components/headings',
+        },
+      ],
+    },
+    {
+      section: 'Layout',
+      children: [
+        {
+          name: 'Header',
+          path: '/components/header',
+        },
+        {
+          name: 'Footer',
+          path: '/components/footer',
+        },
+        {
+          name: 'Carousel',
+          path: '/components/carousel',
+        },
+        {
+          name: 'Tabs',
+          path: '/components/tabs',
+        },
+        {
+          name: 'Bottom tabs',
+          path: '/components/bottom-tabs',
+        },
+        {
+          name: 'Megamenu',
+          path: '/components/megamenu',
+        },
+        {
+          name: 'Hero',
+          path: '/components/hero',
+        },
+        {
+          name: 'Cards',
+          path: '/components/megamenu',
+        },
+        {
+          name: 'Tables',
+          path: '/components/table',
         },
       ],
     },
@@ -65,11 +110,31 @@ const Sidebar: React.FC<Props> = () => {
         },
         {
           name: 'Number input',
-          path: '/components/numbers',
+          path: '/components/number-input',
+        },
+        {
+          name: 'Textarea',
+          path: '/components/textarea',
         },
         {
           name: 'Radio',
           path: '/components/radio',
+        },
+        {
+          name: 'Checkbox',
+          path: '/components/checkbox',
+        },
+        {
+          name: 'Switches',
+          path: '/components/switches',
+        },
+        {
+          name: 'Slider',
+          path: '/components/slider',
+        },
+        {
+          name: 'Date picker',
+          path: '/components/date-picker',
         },
       ],
     },
