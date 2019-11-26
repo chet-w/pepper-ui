@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 // Parts
+import HeadingsLevels from '../../page-parts/Heading/HeadingsLevels'
 
 // Layout
 import Layout from '../../layout/index'
@@ -26,6 +27,7 @@ export default ({ location }: HeadingPageProps) => (
         know the importnce level for the following section, and it gives an SEO
         bonus too.
       </p>
+      <HeadingsLevels />
       <APITable
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
         data={[

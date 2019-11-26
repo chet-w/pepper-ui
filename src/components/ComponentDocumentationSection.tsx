@@ -2,16 +2,29 @@ import React, { ReactComponentElement } from 'react'
 import styled from 'styled-components'
 
 import { H2 } from '../pepper-components/Headings/index'
+import Note from '../pepper-components/Note/index'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vs as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { ReactNode } from 'react'
+
+interface ComponentListProps {
+  isColumn: boolean
+}
 
 const ComponentList = styled.ul`
   margin-left: 0;
+  display: flex;
+  flex-direction: ${(props: ComponentListProps) =>
+    props.isColumn ? 'column' : 'row'};
+  align-items: ${(props: ComponentListProps) =>
+    props.isColumn ? 'auto' : 'center'};
+  justify-content: ${(props: ComponentListProps) =>
+    props.isColumn ? 'center' : 'auto'};
 `
 
 const Component = styled.li`
   list-style: none;
-  display: inline-block;
+  /* display: inline-block; */
   margin-right: 20px;
 `
 
@@ -22,17 +35,30 @@ const Wrapper = styled.article`
 interface Props {
   title: string
   description: string
-  demoComponents: ReactComponentElement<any>[]
+  demoComponents: ReactNode[]
+  demoDisplayStyle?: DemoDisplayStyleTypes
+  notes?: ReactNode[]
   code: string
 }
 
+type DemoDisplayStyleTypes = 'column' | 'row'
+
 const ComponentDocumentationSection: React.FC<Props> = props => {
-  const { title, description, demoComponents, code } = props
+  const {
+    title,
+    description,
+    demoComponents,
+    demoDisplayStyle,
+    notes,
+    code,
+  } = props
   return (
     <Wrapper>
       <H2>{title}</H2>
       <p>{description}</p>
-      <ComponentList>
+      {notes &&
+        notes.map(noteContent => <Note type="info">{noteContent}</Note>)}
+      <ComponentList isColumn={demoDisplayStyle === 'column'}>
         {demoComponents.map(cmp => (
           <Component>{cmp}</Component>
         ))}
