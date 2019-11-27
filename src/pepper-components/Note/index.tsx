@@ -17,25 +17,26 @@ type NoteTypeTypes = 'info' | 'success' | 'warning' | 'danger'
 interface NoteProps {
   type: NoteTypeTypes
   heading?: string
-  children: any
+  children?: any
 }
 
 interface BaseNoteProps {
   type: NoteTypeTypes
-  base: Color
-  accent: Color
+  base: string
+  accent: string
+  children?: any
 }
 
 const colorMappings = [
-  { type: 'info', base: '#bbeffd', accent: 'rgb(97, 218, 251)' },
+  { type: 'info', base: 'rgb(235, 236, 249)', accent: 'rgba(58, 65, 198)' },
 ]
 
-const Note = (props: NoteProps) => {
+const Note: React.FC<NoteProps> = props => {
   const { type, heading, children } = props
 
-  //   const colors = colorMappings.find(item => item.type === type)
+  const colors = colorMappings.find(item => item.type === type)
   return (
-    <BaseNote>
+    <BaseNote {...colors}>
       <H4>{heading || 'Hey! 👋'}</H4>
       {children}
     </BaseNote>

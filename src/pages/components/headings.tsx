@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 // Parts
-import HeadingsLevels from '../../page-parts/Heading/HeadingsLevels'
+import HeadingsLevels from '../../page-parts/Headings/HeadingLevels'
+import HeadingStyles from '../../page-parts/Headings/HeadingStyles'
 
 // Layout
 import Layout from '../../layout/index'
@@ -28,6 +29,7 @@ export default ({ location }: HeadingPageProps) => (
         bonus too.
       </p>
       <HeadingsLevels />
+      <HeadingStyles />
       <APITable
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
         data={[
