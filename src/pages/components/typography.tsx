@@ -8,26 +8,24 @@ import HeadingStyles from '../../page-parts/Headings/HeadingStyles'
 import Layout from '../../layout/index'
 import ComponentLayout from '../../layout/component'
 
-import { H1 } from '../../pepper-components/Headings/index'
+import { H1, H2 } from '../../pepper-components/Headings/index'
 import APITable from '../../components/APITable'
 
-interface HeadingPageProps {
+interface TypographyPageProps {
   location: {
     pathname: string
   }
 }
 
-export default ({ location }: HeadingPageProps) => (
+export default ({ location }: TypographyPageProps) => (
   <Layout location={location}>
     <ComponentLayout>
-      <H1>Headings</H1>
+      <H1>Typography</H1>
       <p>
-        Headings help identify where in the page the user is and gives context
-        to the information that follows it. Using the right type of Heading for
-        the situation is bit thing for accessibility as it lets screen-readers
-        know the importnce level for the following section, and it gives an SEO
-        bonus too.
+        Typography is the section to do with the text used on the page. It
+        covers topics such as Headings, Links, Code Snippets, and Notes.
       </p>
+      <H2>Headings</H2>
       <HeadingsLevels />
       <HeadingStyles />
       <APITable
