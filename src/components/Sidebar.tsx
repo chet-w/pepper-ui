@@ -55,8 +55,8 @@ const Sidebar: React.FC<Props> = () => {
           path: '/components/icons',
         },
         {
-          name: 'Headings',
-          path: '/components/headings',
+          name: 'Typography',
+          path: '/components/typography',
         },
       ],
     },
