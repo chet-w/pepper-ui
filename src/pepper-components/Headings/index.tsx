@@ -41,30 +41,39 @@ const H6 = styled.h6`
   position: relative;
 `
 
+const StyledLink = styled.a`
+  color: #9296e0;
+  margin-right: 0.25em;
+
+  &::after {
+    content: none;
+  }
+`
+
 const Heading = (props: HeadingProps) => {
   const { level, id, children } = props
 
   const headingContent = (
     <>
-      <a href={`#${id}`} title={id}>
+      <StyledLink href={`#${id}`} title={id}>
         #
-      </a>
+      </StyledLink>
       {children}
     </>
   )
 
   return level === 'page' ? (
-    <H1>{headingContent}</H1>
+    <H1 id={id}>{headingContent}</H1>
   ) : level === 'section' ? (
-    <H2>{headingContent}</H2>
+    <H2 id={id}>{headingContent}</H2>
   ) : level === 'subsection' ? (
-    <H3>{headingContent}</H3>
+    <H3 id={id}>{headingContent}</H3>
   ) : level === 'note' ? (
-    <H4>{headingContent}</H4>
+    <H4 id={id}>{headingContent}</H4>
   ) : level === 'minor' ? (
-    <H5>{headingContent}</H5>
+    <H5 id={id}>{headingContent}</H5>
   ) : (
-    <H6>{headingContent}</H6>
+    <H6 id={id}>{headingContent}</H6>
   )
 }
 
