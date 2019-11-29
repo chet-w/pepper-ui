@@ -7,8 +7,8 @@ interface Props {}
 const HeadingStyles: React.FC<Props> = () => {
   return (
     <ComponentDocumentationSection
-      title="Styles"
-      description="Add some minor style changes to your headings to add a bit more flare 🕺."
+      title="Variations"
+      description="Add some minor touches to the style of your headings, or add some functionality by adding a link."
       demoComponents={[
         <Heading level="subsection" id="basic">
           Basic
@@ -16,8 +16,11 @@ const HeadingStyles: React.FC<Props> = () => {
         <Heading level="subsection" id="underlined" underlined>
           Underlined
         </Heading>,
+        <Heading level="subsection" id="linked" linked>
+          Linked
+        </Heading>,
       ]}
-      demoDisplayStyle="column"
+      demoDisplayStyle="row"
       code={`ss`}
     />
   )

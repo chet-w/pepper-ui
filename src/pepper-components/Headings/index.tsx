@@ -5,6 +5,7 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   id: string
   level: HeadingLevels
   underlined?: boolean
+  linked?: boolean
 }
 
 type HeadingLevels =
@@ -27,6 +28,20 @@ const H2 = styled.h2`
 const H3 = styled.h3`
   font-size: 20px;
   position: relative;
+
+  & ::after {
+    content: ${(props: HeadingProps) => (props.underlined ? '""' : 'none')};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 const H4 = styled.h4`
   font-size: 18px;
@@ -51,23 +66,29 @@ const StyledLink = styled.a`
 `
 
 const Heading = (props: HeadingProps) => {
-  const { level, id, children } = props
+  const { level, id, linked, underlined, children } = props
 
   const headingContent = (
     <>
-      <StyledLink href={`#${id}`} title={id}>
-        #
-      </StyledLink>
+      {linked && (
+        <StyledLink href={`#${id}`} title={id}>
+          #
+        </StyledLink>
+      )}
       {children}
     </>
   )
 
   return level === 'page' ? (
-    <H1 id={id}>{headingContent}</H1>
+    <H1 linked={linked} id={id}>
+      {headingContent}
+    </H1>
   ) : level === 'section' ? (
     <H2 id={id}>{headingContent}</H2>
   ) : level === 'subsection' ? (
-    <H3 id={id}>{headingContent}</H3>
+    <H3 underlined={underlined} id={id}>
+      {headingContent}
+    </H3>
   ) : level === 'note' ? (
     <H4 id={id}>{headingContent}</H4>
   ) : level === 'minor' ? (
