@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { H4 } from '../Headings'
-import { Color } from 'csstype'
+import Heading from '../Headings'
 
 const BaseNote = styled.blockquote`
   padding: 20px;
@@ -37,7 +36,9 @@ const Note: React.FC<NoteProps> = props => {
   const colors = colorMappings.find(item => item.type === type)
   return (
     <BaseNote {...colors}>
-      <H4>{heading || 'Hey! 👋'}</H4>
+      <Heading level="note" id="note">
+        {heading || 'Hey! 👋'}
+      </Heading>
       {children}
     </BaseNote>
   )

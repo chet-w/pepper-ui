@@ -1,6 +1,6 @@
 import React from 'react'
 import ComponentDocumentationSection from '../../components/ComponentDocumentationSection'
-import { H3 } from '../../pepper-components/Headings'
+import Heading from '../../pepper-components/Headings'
 
 interface Props {}
 
@@ -9,7 +9,14 @@ const HeadingStyles: React.FC<Props> = () => {
     <ComponentDocumentationSection
       title="Styles"
       description="Add some minor style changes to your headings to add a bit more flare 🕺."
-      demoComponents={[<H3>Basic</H3>, <H3 underlined>Underlined</H3>]}
+      demoComponents={[
+        <Heading level="subsection" id="basic">
+          Basic
+        </Heading>,
+        <Heading level="subsection" id="underlined" underlined>
+          Underlined
+        </Heading>,
+      ]}
       demoDisplayStyle="column"
       code={`ss`}
     />

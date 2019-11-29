@@ -8,7 +8,7 @@ import HeadingStyles from '../../page-parts/Headings/HeadingStyles'
 import Layout from '../../layout/index'
 import ComponentLayout from '../../layout/component'
 
-import { H1, H2 } from '../../pepper-components/Headings/index'
+import Heading from '../../pepper-components/Headings/index'
 import APITable from '../../components/APITable'
 
 interface TypographyPageProps {
@@ -20,12 +20,16 @@ interface TypographyPageProps {
 export default ({ location }: TypographyPageProps) => (
   <Layout location={location}>
     <ComponentLayout>
-      <H1>Typography</H1>
+      <Heading level="page" id="typography">
+        Typography
+      </Heading>
       <p>
         Typography is the section to do with the text used on the page. It
         covers topics such as Headings, Links, Code Snippets, and Notes.
       </p>
-      <H2>Headings</H2>
+      <Heading level="section" id="headings">
+        Headings
+      </Heading>
       <HeadingsLevels />
       <HeadingStyles />
       <APITable

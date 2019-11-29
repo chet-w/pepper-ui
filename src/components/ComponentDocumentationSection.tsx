@@ -1,7 +1,7 @@
 import React, { ReactComponentElement } from 'react'
 import styled from 'styled-components'
 
-import { H2, H3 } from '../pepper-components/Headings/index'
+import Heading from '../pepper-components/Headings/index'
 import Note from '../pepper-components/Note/index'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vs as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -54,7 +54,9 @@ const ComponentDocumentationSection: React.FC<Props> = props => {
   } = props
   return (
     <Wrapper>
-      <H3>{title}</H3>
+      <Heading level="subsection" id={title}>
+        {title}
+      </Heading>
       <p>{description}</p>
       {notes &&
         notes.map(noteContent => <Note type="info">{noteContent}</Note>)}

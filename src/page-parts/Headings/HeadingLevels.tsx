@@ -1,6 +1,6 @@
 import React from 'react'
 import ComponentDocumentationSection from '../../components/ComponentDocumentationSection'
-import { H1, H2, H3, H4, H5, H6 } from '../../pepper-components/Headings'
+import Heading from '../../pepper-components/Headings'
 
 interface Props {}
 
@@ -17,12 +17,24 @@ const HeadingsLevels: React.FC<Props> = () => (
       </p>,
     ]}
     demoComponents={[
-      <H1>Page level</H1>,
-      <H2>Section level</H2>,
-      <H3>Subsection level</H3>,
-      <H4>Less important</H4>,
-      <H5>Even less important</H5>,
-      <H6>Least important</H6>,
+      <Heading level="page" id="page-level">
+        Page level
+      </Heading>,
+      <Heading level="section" id="section-level">
+        Section level
+      </Heading>,
+      <Heading level="subsection" id="subsection-level">
+        Subsection level
+      </Heading>,
+      <Heading level="note" id="note-level">
+        Less important
+      </Heading>,
+      <Heading level="minor" id="minor-level">
+        Even less important
+      </Heading>,
+      <Heading level="very-minor" id="very-minor-level">
+        Least important
+      </Heading>,
     ]}
     demoDisplayStyle={'column'}
     code={`import { Button } from 'pepper-ui'
