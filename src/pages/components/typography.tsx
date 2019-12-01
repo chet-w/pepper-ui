@@ -32,67 +32,15 @@ export default ({ location }: TypographyPageProps) => (
       </Heading>
       <HeadingsLevels />
       <HeadingStyles />
+      <Heading level="section" id="notes">
+        Notes
+      </Heading>
+      <Heading level="section" id="code">
+        Code
+      </Heading>
       <APITable
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
-        data={[
-          {
-            prop: 'type',
-            desc: 'The importance level or style of the button',
-            type: 'string',
-            options: [
-              'primary',
-              'secondary',
-              'tertiary',
-              'ghost',
-              'danger',
-              'disabled',
-            ],
-            default: 'primary',
-          },
-          {
-            prop: 'shape',
-            desc: 'The shape of the button',
-            type: 'string',
-            options: ['rounded', 'pills', 'circle'],
-            default: 'rounded',
-          },
-          {
-            prop: 'loading',
-            desc: 'Whether to show a spinner or not',
-            type: 'boolean',
-            options: ['-'],
-            default: 'false',
-          },
-          {
-            prop: 'disabled',
-            desc: 'Whether the button is inactive',
-            type: 'boolean',
-            options: ['-'],
-            default: 'false',
-          },
-          {
-            prop: 'icon',
-            desc: 'The icon to go alongside the button contents',
-            type: 'ReactNode',
-            options: ['-'],
-            default: 'null',
-          },
-          {
-            prop: 'showLoadingContent',
-            desc:
-              'Whether to show specified text when the button is in a loading state',
-            type: 'boolean',
-            options: ['-'],
-            default: 'false',
-          },
-          {
-            prop: 'loadingContent',
-            desc: 'The content to show while the button is in a loading state',
-            type: 'ReactNode | string',
-            options: ['-'],
-            default: 'null',
-          },
-        ]}
+        data={[]}
       />
     </ComponentLayout>
   </Layout>

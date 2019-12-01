@@ -21,7 +21,19 @@ const HeadingStyles: React.FC<Props> = () => {
         </Heading>,
       ]}
       demoDisplayStyle="row"
-      code={`ss`}
+      code={`import { Heading } from 'pepper-ui'
+
+const MyComponent = () => (
+  <div>
+    <Heading level='page' id='main-title' linked>
+      My Main Linked Title
+    </Heading>
+    <Heading level='section' id='section' underlined>
+      My Underlined Section Title
+    </Heading>
+  </div>
+)
+            `}
     />
   )
 }

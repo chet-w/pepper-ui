@@ -36,18 +36,19 @@ const HeadingsLevels: React.FC<Props> = () => (
         Least important
       </Heading>,
     ]}
-    demoDisplayStyle={'column'}
-    code={`import { Button } from 'pepper-ui'
+    demoDisplayStyle="column"
+    code={`import { Heading } from 'pepper-ui'
 
-    const MyComponent = () => (
-      <div>
-        This is the default shape:
-        <Button type="primary" shape="rounded">I'm rounded</Button>
-    
-        But you can set a shape manually too:
-        <Button type="primary" shape="pills">I'm pills</Button>
-      </div>
-    )
+const MyComponent = () => (
+  <div>
+    <Heading level='page' id='main-title'>
+      My Main Title
+    </Heading>
+    <Heading level='section' id='section'>
+      My Section Title
+    </Heading>
+  </div>
+)
             `}
   />
 )

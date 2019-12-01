@@ -99,6 +99,10 @@ const Sidebar: React.FC<Props> = () => {
           name: 'Tables',
           path: '/components/table',
         },
+        {
+          name: 'Scrollspy',
+          path: '/components/scrollspy',
+        },
       ],
     },
     {

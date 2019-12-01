@@ -19,6 +19,7 @@ const mainTheme = {
     primary: '#3A41C6',
     white: '#FFFFFF',
     lightGrey: '#EEE',
+    black: 'rgba(0, 0, 0, 0.8)',
   },
   spacing: {
     unit: 8,

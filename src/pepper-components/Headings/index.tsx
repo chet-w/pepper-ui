@@ -1,11 +1,14 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface StyledHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   id: string
-  level: HeadingLevels
   underlined?: boolean
   linked?: boolean
+}
+
+interface HeadingProps extends StyledHeadingProps {
+  level: HeadingLevels
 }
 
 type HeadingLevels =
@@ -19,10 +22,40 @@ type HeadingLevels =
 const H1 = styled.h1`
   font-size: 36px;
   position: relative;
+
+  & ::after {
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 const H2 = styled.h2`
   font-size: 24px;
   position: relative;
+
+  & ::after {
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 
 const H3 = styled.h3`
@@ -30,7 +63,8 @@ const H3 = styled.h3`
   position: relative;
 
   & ::after {
-    content: ${(props: HeadingProps) => (props.underlined ? '""' : 'none')};
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
     position: absolute;
     top: 101%;
     left: 0;
@@ -46,14 +80,59 @@ const H3 = styled.h3`
 const H4 = styled.h4`
   font-size: 18px;
   position: relative;
+
+  & ::after {
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 const H5 = styled.h5`
   font-size: 16px;
   position: relative;
+
+  & ::after {
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 const H6 = styled.h6`
   font-size: 14px;
   position: relative;
+
+  & ::after {
+    content: ${(props: StyledHeadingProps) =>
+      props.underlined ? '""' : 'none'};
+    position: absolute;
+    top: 101%;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.palette.primary},
+      ${props => props.theme.palette.darkPrimary}
+    );
+  }
 `
 
 const StyledLink = styled.a`
