@@ -8,7 +8,7 @@ import ButtonShapes from '../../page-parts/Button/ButtonShapes'
 import Layout from '../../layout/index'
 import ComponentLayout from '../../layout/component'
 
-import { H1 } from '../../pepper-components/Headings/index'
+import Heading from '../../pepper-components/Headings/index'
 import ButtonSpinner from '../../page-parts/Button/ButtonSpinner'
 import ButtonIcons from '../../page-parts/Button/ButtonIcons'
 import APITable from '../../components/APITable'
@@ -22,7 +22,9 @@ interface ButtonPageProps {
 export default ({ location }: ButtonPageProps) => (
   <Layout location={location}>
     <ComponentLayout>
-      <H1>Buttons</H1>
+      <Heading level="page" id="buttons">
+        Buttons
+      </Heading>
       <p>
         Buttons are fairly straightforward elements, they indicate a clickable
         area that'll usually trigger some action.

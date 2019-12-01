@@ -9,7 +9,7 @@ import Layout from '../layout/index'
 
 // Components
 import { Button } from '../pepper-components/Button'
-import { H1, H3 } from '../pepper-components/Headings'
+import Heading from '../pepper-components/Headings'
 
 interface IndexPageProps {
   location: {
@@ -46,7 +46,8 @@ const Wrapper = styled.div`
   /* background-position-x: 384px, 0; */
   animation: ${MoveBackground} 12s linear infinite;
 
-  & ${H1}, ${H3} {
+  & h1,
+  h3 {
     color: ${props => props.theme.palette.white};
   }
 `
@@ -61,8 +62,12 @@ export default ({ location }: IndexPageProps) => {
   return (
     <Layout location={location}>
       <Wrapper>
-        <H1>Pepper</H1>
-        <H3>A new flavour for User Interfaces</H3>
+        <Heading level="page" id="splash-title">
+          Pepper
+        </Heading>
+        <Heading level="subsection" id="splash-subtitle">
+          A new flavour for User Interfaces
+        </Heading>
         <Buttons>
           <Link to="/components/buttons">
             <Button type="secondary" shape="rounded">
