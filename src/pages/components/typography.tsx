@@ -10,6 +10,7 @@ import ComponentLayout from '../../layout/component'
 
 import Heading from '../../pepper-components/Headings/index'
 import APITable from '../../components/APITable'
+import { idea } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 interface TypographyPageProps {
   location: {
@@ -32,16 +33,54 @@ export default ({ location }: TypographyPageProps) => (
       </Heading>
       <HeadingsLevels />
       <HeadingStyles />
+      <APITable
+        title="API - Headings"
+        header={['Prop', 'Description', 'Type', 'Options', 'Default']}
+        data={[
+          {
+            prop: 'level',
+            desc: 'The HTML level of the heading.',
+            type: 'enum',
+            options: [
+              'page',
+              'section',
+              'subsection',
+              'note',
+              'minor',
+              'very-minor',
+            ],
+            default: '-',
+          },
+          {
+            prop: 'id',
+            desc:
+              'id attribute for the heading. Mainly used for when the Heading is linked',
+            type: 'string',
+            options: ['-'],
+            default: '-',
+          },
+          {
+            prop: 'underlined',
+            desc: 'Use the underlined style or not',
+            type: 'boolean',
+            options: ['-'],
+            default: 'false',
+          },
+          {
+            prop: 'linked',
+            desc: 'Whether to add a hyperlink to the heading or not',
+            type: 'boolean',
+            options: ['-'],
+            default: 'false',
+          },
+        ]}
+      />
       <Heading level="section" id="notes">
         Notes
       </Heading>
       <Heading level="section" id="code">
         Code
       </Heading>
-      <APITable
-        header={['Prop', 'Description', 'Type', 'Options', 'Default']}
-        data={[]}
-      />
     </ComponentLayout>
   </Layout>
 )

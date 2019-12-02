@@ -10,6 +10,7 @@ const StyledTable = styled.table`
 `
 
 interface Props {
+  title?: string
   header: string[]
   data: APITableRow[]
 }
@@ -22,9 +23,9 @@ interface APITableRow {
   default: string
 }
 
-const APITable: React.FC<Props> = ({ header, data }) => (
+const APITable: React.FC<Props> = ({ title, header, data }) => (
   <article>
-    <h2>API</h2>
+    <h2>{title ? title : 'API'}</h2>
     <StyledTable>
       <thead>
         {header.map(heading => (

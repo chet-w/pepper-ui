@@ -39,7 +39,7 @@ export default ({ location }: ButtonPageProps) => (
           {
             prop: 'type',
             desc: 'The importance level or style of the button',
-            type: 'string',
+            type: 'enum',
             options: [
               'primary',
               'secondary',
