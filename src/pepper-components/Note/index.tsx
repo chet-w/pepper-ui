@@ -9,6 +9,8 @@ const BaseNote = styled.blockquote`
   border-left-color: ${(props: BaseNoteProps) => props.accent};
   margin-left: 0;
   margin-right: 0;
+  min-width: 300px;
+  border-radius: 0 5px 5px 0;
 `
 
 type NoteTypeTypes = 'info' | 'success' | 'warning' | 'danger'
@@ -28,6 +30,9 @@ interface BaseNoteProps {
 
 const colorMappings = [
   { type: 'info', base: 'rgb(235, 236, 249)', accent: 'rgba(58, 65, 198)' },
+  { type: 'success', base: 'rgb(246, 255, 237)', accent: 'rgb(204, 241, 176)' },
+  { type: 'danger', base: 'rgb(255, 241, 240)', accent: 'rgb(255, 187, 184)' },
+  { type: 'warning', base: 'rgb(255, 251, 230)', accent: 'rgb(255, 237, 176)' },
 ]
 
 const Note: React.FC<NoteProps> = props => {

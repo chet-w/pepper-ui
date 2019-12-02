@@ -14,6 +14,7 @@ interface ComponentListProps {
 const ComponentList = styled.ul`
   margin-left: 0;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: ${(props: ComponentListProps) =>
     props.isColumn ? 'column' : 'row'};
   align-items: ${(props: ComponentListProps) =>
