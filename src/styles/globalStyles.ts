@@ -14,10 +14,15 @@ export default createGlobalStyle`
     src: local('Operator Mono Book Italic'), url('../fonts/OperatorMono-BookItalic.woff') format('woff');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
   body{
     -webkit-font-smoothing: antialiased;
     margin: 0;
     background: #FFFFFF; 
+    scroll-behavior: smooth;
   }
 
   a {

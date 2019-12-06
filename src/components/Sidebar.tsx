@@ -148,16 +148,16 @@ const Sidebar: React.FC<Props> = () => {
     <StyledSidebar>
       <SidebarContent>
         {menuItems.map(item => (
-          <>
+          <React.Fragment key={JSON.stringify(item)}>
             <h4>{item.section}</h4>
             <ul>
               {item.children.map(child => (
-                <li>
+                <li key={JSON.stringify(child)}>
                   <Link to={child.path}>{child.name}</Link>
                 </li>
               ))}
             </ul>
-          </>
+          </React.Fragment>
         ))}
       </SidebarContent>
     </StyledSidebar>

@@ -28,27 +28,29 @@ const APITable: React.FC<Props> = ({ title, header, data }) => (
     <h2>{title ? title : 'API'}</h2>
     <StyledTable>
       <thead>
-        {header.map(heading => (
-          <th>{heading}</th>
-        ))}
+        <tr>
+          {header.map((heading, index) => (
+            <th key={`api-${index}-${heading}`}>{heading}</th>
+          ))}
+        </tr>
       </thead>
       <tbody>
-        {data.map(row => (
-          <tr>
+        {data.map((row, rowIndex) => (
+          <tr key={`api-table-row-${title}-${rowIndex}`}>
             {Object.values(row).map((col, index) =>
               index === 1 ? (
-                <td>{col}</td>
+                <td key={`${col}-${index}`}>{col}</td>
               ) : index === 3 ? (
-                <td>
+                <td key={`${col}-${index}`}>
                   {col.map((option: string, optIndex: number) => (
-                    <>
+                    <React.Fragment key={`${option} + ${optIndex}`}>
                       <code>{option}</code>
                       {optIndex !== col.length - 1 && ', '}
-                    </>
+                    </React.Fragment>
                   ))}
                 </td>
               ) : (
-                <td>
+                <td key={`${col}-${index}`}>
                   <code>{col}</code>
                 </td>
               )
