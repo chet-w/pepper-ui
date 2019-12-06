@@ -60,7 +60,11 @@ const ComponentDocumentationSection: React.FC<Props> = props => {
       </Heading>
       <p>{description}</p>
       {notes &&
-        notes.map(noteContent => <Note type="info">{noteContent}</Note>)}
+        notes.map(noteContent => (
+          <Note heading="Keep in mind" type="info">
+            {noteContent}
+          </Note>
+        ))}
       <ComponentList isColumn={demoDisplayStyle === 'column'}>
         {demoComponents.map(cmp => (
           <Component>{cmp}</Component>

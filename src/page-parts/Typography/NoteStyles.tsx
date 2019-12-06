@@ -23,7 +23,19 @@ const NotesStyles: React.FC<Props> = () => {
           Warning note
         </Note>,
       ]}
-      code={`ss`}
+      code={`import { Note } from 'pepper-ui'
+
+const MyComponent = () => (
+  <div>
+    <Note
+     type="info"
+     heading="Hey!"
+    >
+     I just made a note.
+    </Note>
+  </div>
+)
+            `}
     />
   )
 }

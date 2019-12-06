@@ -79,6 +79,26 @@ export default ({ location }: TypographyPageProps) => (
         Notes
       </Heading>
       <NotesStyles />
+      <APITable
+        title="API - Headings"
+        header={['Prop', 'Description', 'Type', 'Options', 'Default']}
+        data={[
+          {
+            prop: 'type',
+            desc: 'What type of Note should be created',
+            type: 'enum',
+            options: ['info', 'success', 'danger', 'warning'],
+            default: '-',
+          },
+          {
+            prop: 'heading',
+            desc: 'The heading for the Note',
+            type: 'string',
+            options: ['-'],
+            default: '-',
+          },
+        ]}
+      />
       <Heading level="section" id="code">
         Code
       </Heading>
