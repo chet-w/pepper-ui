@@ -159,21 +159,29 @@ const Heading = (props: HeadingProps) => {
   )
 
   return level === 'page' ? (
-    <H1 linked={linked} id={id}>
+    <H1 linked={linked} underlined={underlined} id={id}>
       {headingContent}
     </H1>
   ) : level === 'section' ? (
-    <H2 id={id}>{headingContent}</H2>
+    <H2 linked={linked} underlined={underlined} id={id}>
+      {headingContent}
+    </H2>
   ) : level === 'subsection' ? (
-    <H3 underlined={underlined} id={id}>
+    <H3 linked={linked} underlined={underlined} id={id}>
       {headingContent}
     </H3>
   ) : level === 'note' ? (
-    <H4 id={id}>{headingContent}</H4>
+    <H4 linked={linked} underlined={underlined} id={id}>
+      {headingContent}
+    </H4>
   ) : level === 'minor' ? (
-    <H5 id={id}>{headingContent}</H5>
+    <H5 linked={linked} underlined={underlined} id={id}>
+      {headingContent}
+    </H5>
   ) : (
-    <H6 id={id}>{headingContent}</H6>
+    <H6 linked={linked} underlined={underlined} id={id}>
+      {headingContent}
+    </H6>
   )
 }
 

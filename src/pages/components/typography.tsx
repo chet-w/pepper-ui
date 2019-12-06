@@ -3,6 +3,8 @@ import * as React from 'react'
 // Parts
 import HeadingsLevels from '../../page-parts/Typography/HeadingLevels'
 import HeadingStyles from '../../page-parts/Typography/HeadingStyles'
+import NotesStyles from '../../page-parts/Typography/NoteStyles'
+import CodeInline from '../../page-parts/Typography/CodeInline'
 
 // Layout
 import Layout from '../../layout/index'
@@ -10,7 +12,6 @@ import ComponentLayout from '../../layout/component'
 
 import Heading from '../../pepper-components/Headings/index'
 import APITable from '../../components/APITable'
-import NotesStyles from '../../page-parts/Typography/NoteStyles'
 
 interface TypographyPageProps {
   location: {
@@ -33,6 +34,14 @@ export default ({ location }: TypographyPageProps) => (
       </Heading>
       <HeadingsLevels />
       <HeadingStyles />
+      <Heading level="section" id="notes">
+        Notes
+      </Heading>
+      <NotesStyles />
+      <Heading level="section" id="code">
+        Code
+      </Heading>
+      <CodeInline />
       <APITable
         title="API - Headings"
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
@@ -75,12 +84,8 @@ export default ({ location }: TypographyPageProps) => (
           },
         ]}
       />
-      <Heading level="section" id="notes">
-        Notes
-      </Heading>
-      <NotesStyles />
       <APITable
-        title="API - Headings"
+        title="API - Notes"
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
         data={[
           {
@@ -99,9 +104,6 @@ export default ({ location }: TypographyPageProps) => (
           },
         ]}
       />
-      <Heading level="section" id="code">
-        Code
-      </Heading>
     </ComponentLayout>
   </Layout>
 )
