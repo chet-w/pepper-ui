@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://pepper-ui.netlify.com`,
     language: `en`,
     color: `#512888`,
+    twitter: `@chet-w`
   },
   plugins: [
     {
