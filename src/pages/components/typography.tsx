@@ -4,7 +4,7 @@ import * as React from 'react'
 import HeadingsLevels from '../../page-parts/Typography/HeadingLevels'
 import HeadingStyles from '../../page-parts/Typography/HeadingStyles'
 import NotesStyles from '../../page-parts/Typography/NoteStyles'
-import CodeInline from '../../page-parts/Typography/CodeInline'
+import CodeStyles from '../../page-parts/Typography/CodeStyles'
 
 // Layout
 import Layout from '../../layout/index'
@@ -41,7 +41,7 @@ export default ({ location }: TypographyPageProps) => (
       <Heading level="section" id="code">
         Code
       </Heading>
-      <CodeInline />
+      <CodeStyles />
       <APITable
         title="API - Headings"
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
@@ -100,6 +100,19 @@ export default ({ location }: TypographyPageProps) => (
             desc: 'The heading for the Note',
             type: 'string',
             options: ['-'],
+            default: '-',
+          },
+        ]}
+      />
+      <APITable
+        title="API - Code Block"
+        header={['Prop', 'Description', 'Type', 'Options', 'Default']}
+        data={[
+          {
+            prop: 'lang',
+            desc: 'The programming language to syntax highlight',
+            type: 'enum',
+            options: ['[to come later]'],
             default: '-',
           },
         ]}

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vs as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const StyledInlineCode = styled.code`
   background: ${props => `${props.theme.palette.primary}22`};
@@ -8,19 +9,22 @@ const StyledInlineCode = styled.code`
   color: ${props => props.theme.palette.primary};
 `
 
-type CodeTypes = 'inline' | 'block'
-
-interface CodeProps {
-  type: CodeTypes
+interface CodeInlineProps {
   children: any
 }
 
-const Code: React.FC<CodeProps> = ({ type, children }) => {
-  return type === 'inline' ? (
-    <StyledInlineCode>{children}</StyledInlineCode>
-  ) : (
-    <SyntaxHighlighter>{children}</SyntaxHighlighter>
-  )
+interface CodeBlockProps extends CodeInlineProps {
+  lang: string
 }
 
-export default Code
+const CodeBlock: React.FC<CodeBlockProps> = ({ lang, children }) => (
+  <SyntaxHighlighter language={lang} style={theme}>
+    {children}
+  </SyntaxHighlighter>
+)
+
+const CodeInline: React.FC<CodeInlineProps> = ({ children }) => (
+  <StyledInlineCode>{children}</StyledInlineCode>
+)
+
+export { CodeBlock, CodeInline }
