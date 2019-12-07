@@ -14,9 +14,9 @@ const StyledSidebar = styled.aside`
   &::after {
     content: "";
     position: absolute;
-    height: 80%;
+    height: 95%;
     left: 100%;
-    top: 10%;
+    top: 2.5%;
     width: 2px;
     background: linear-gradient(
     to bottom,

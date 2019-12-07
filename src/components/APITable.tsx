@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const Wrapper = styled.article`
+  margin-bottom: 30px;
+`;
+
 const StyledTable = styled.table`
   & code {
     background: ${props => `${props.theme.palette.primary}22`};
@@ -24,7 +28,7 @@ interface APITableRow {
 }
 
 const APITable: React.FC<Props> = ({ title, header, data }) => (
-  <article>
+  <Wrapper>
     <h2>{title ? title : 'API'}</h2>
     <StyledTable>
       <thead>
@@ -59,7 +63,7 @@ const APITable: React.FC<Props> = ({ title, header, data }) => (
         ))}
       </tbody>
     </StyledTable>
-  </article>
+  </Wrapper>
 )
 
 export default APITable
