@@ -56,7 +56,7 @@ const MyComponent = () => (
      placeholder="A password input"
      type="password"
      label="Password:"
-    />,
+    />
   </div>
 )
         `}

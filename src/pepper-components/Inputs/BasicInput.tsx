@@ -28,8 +28,8 @@ interface BasicInputProps extends React.HTMLAttributes<HTMLInputElement> {
   name?: string
   label?: string
   labelPlacement?: LabelPlacementTypes
-  prefix?: string
-  suffix?: string
+  prefixText?: string | string[]
+  suffixText?: string | string[]
   hasClearButton?: boolean
 }
 
@@ -42,14 +42,26 @@ type InputTypeTypes = 'text' | 'email' | 'password' | 'number' | 'tel'
 type LabelPlacementTypes = 'left' | 'top'
 
 const BasicInput: React.FC<BasicInputProps> = props => {
-  const { label, id, prefix, suffix, labelPlacement, ...otherProps } = props
+  const {
+    label,
+    id,
+    prefixText,
+    suffixText,
+    labelPlacement,
+    ...otherProps
+  } = props
 
   return (
     <InputWrapper labelPlacement={labelPlacement ? labelPlacement : 'left'}>
       {label && <label htmlFor={id}>{label}</label>}
-      {prefix && <InputPrefix>{prefix}</InputPrefix>}
-      <BaseInput id={id} {...otherProps} prefix={prefix} suffix={suffix} />
-      {suffix && <InputSuffix>{suffix}</InputSuffix>}
+      {prefixText && <InputPrefix>{prefixText}</InputPrefix>}
+      <BaseInput
+        id={id}
+        {...otherProps}
+        prefixText={!!prefixText}
+        suffixText={!!suffixText}
+      />
+      {suffixText && <InputSuffix>{suffixText}</InputSuffix>}
     </InputWrapper>
   )
 }

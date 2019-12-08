@@ -14,16 +14,40 @@ const InputPrefixSuffix: React.FC<InputPrefixSuffixProps> = () => {
           id="demo-prefix"
           placeholder="A New Zealand Phone number"
           type="tel"
-          prefix="+64"
+          prefixText="+64"
         />,
         <BasicInput
           id="demo-suffix"
           placeholder="An email"
           type="text"
-          suffix="@gmail.com"
+          suffixText="@gmail.com"
+        />,
+        <BasicInput
+          id="demo-suffix"
+          placeholder="An email"
+          type="text"
+          suffixText={['@gmail.com', '@outlook.com', '@icloud.com']}
         />,
       ]}
-      code={``}
+      code={`import { Input } from 'pepper-ui'
+
+const MyComponent = () => (
+  <div>
+    <BasicInput
+      id="demo-prefix"
+      placeholder="A New Zealand Phone number"
+      type="tel"
+      prefix="+64"
+    />,
+    <BasicInput
+      id="demo-suffix"
+      placeholder="An email"
+      type="text"
+      suffix="@gmail.com"
+    />
+  </div>
+)
+        `}
     />
   )
 }
