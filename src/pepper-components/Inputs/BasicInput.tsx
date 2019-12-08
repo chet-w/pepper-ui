@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BaseInput, InputPrefix, InputSuffix } from './InputStyles'
 import styled from 'styled-components'
+import { ShowHidePasswordButton, ClearInputButton } from './InputButtons'
 
 const InputWrapper = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ interface BasicInputProps extends React.HTMLAttributes<HTMLInputElement> {
   prefixText?: string | string[]
   suffixText?: string | string[]
   hasClearButton?: boolean
+  hasShowButton?: boolean
 }
 
 interface InputWrapperProps {
@@ -45,11 +47,16 @@ const BasicInput: React.FC<BasicInputProps> = props => {
   const {
     label,
     id,
+    type,
+    hasClearButton,
+    hasShowButton,
     prefixText,
     suffixText,
     labelPlacement,
     ...otherProps
   } = props
+
+  const [isShowingPassword, setShowPassword] = useState(false)
 
   return (
     <InputWrapper labelPlacement={labelPlacement ? labelPlacement : 'left'}>
@@ -57,10 +64,17 @@ const BasicInput: React.FC<BasicInputProps> = props => {
       {prefixText && <InputPrefix>{prefixText}</InputPrefix>}
       <BaseInput
         id={id}
+        type={
+          type === 'password' ? (isShowingPassword ? 'text' : 'password') : type
+        }
         {...otherProps}
         prefixText={!!prefixText}
         suffixText={!!suffixText}
       />
+      {type === 'password' && hasShowButton && (
+        <ShowHidePasswordButton isShowing={isShowingPassword} />
+      )}
+      {type !== 'password' && hasClearButton && <ClearInputButton />}
       {suffixText && <InputSuffix>{suffixText}</InputSuffix>}
     </InputWrapper>
   )
