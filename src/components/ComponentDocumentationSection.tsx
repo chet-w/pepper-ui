@@ -18,7 +18,7 @@ const ComponentList = styled.ul`
   flex-direction: ${(props: ComponentListProps) =>
     props.isColumn ? 'column' : 'row'};
   align-items: ${(props: ComponentListProps) =>
-    props.isColumn ? 'auto' : 'center'};
+    props.isColumn ? 'flex-start' : 'center'};
   justify-content: ${(props: ComponentListProps) =>
     props.isColumn ? 'center' : 'auto'};
 `
