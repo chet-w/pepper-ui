@@ -6,6 +6,8 @@ export interface ITheme {
     lightPrimary: string
     black: string
     white: string
+    grey: string
+    lightGrey: string
   }
   spacing: {
     unit: number
@@ -18,7 +20,8 @@ const mainTheme = {
     darkPrimary: '#512888',
     primary: '#3A41C6',
     white: '#FFFFFF',
-    lightGrey: '#EEE',
+    lightGrey: '#f5f5f5',
+    grey: '#d9d9d9',
     black: 'rgba(0, 0, 0, 0.8)',
   },
   spacing: {

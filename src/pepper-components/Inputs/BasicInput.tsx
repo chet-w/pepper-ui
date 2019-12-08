@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseInput } from './InputStyles'
+import { BaseInput, InputPrefix, InputSuffix } from './InputStyles'
 import styled from 'styled-components'
 
 const InputWrapper = styled.div`
@@ -15,6 +15,10 @@ const InputWrapper = styled.div`
     margin: ${(props: InputWrapperProps) =>
       props.labelPlacement === 'top' ? '0 0 5px 0' : '0 5px 0 0'};
   }
+`
+
+const AddonWrapper = styled.div`
+  display: flex;
 `
 
 interface BasicInputProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -33,17 +37,19 @@ interface InputWrapperProps {
   labelPlacement: LabelPlacementTypes
 }
 
-type InputTypeTypes = 'text' | 'email' | 'password' | 'number'
+type InputTypeTypes = 'text' | 'email' | 'password' | 'number' | 'tel'
 
 type LabelPlacementTypes = 'left' | 'top'
 
 const BasicInput: React.FC<BasicInputProps> = props => {
-  const { label, id, labelPlacement, ...otherProps } = props
+  const { label, id, prefix, suffix, labelPlacement, ...otherProps } = props
 
   return (
     <InputWrapper labelPlacement={labelPlacement ? labelPlacement : 'left'}>
       {label && <label htmlFor={id}>{label}</label>}
-      <BaseInput id={id} {...otherProps} />
+      {prefix && <InputPrefix>{prefix}</InputPrefix>}
+      <BaseInput id={id} {...otherProps} prefix={prefix} suffix={suffix} />
+      {suffix && <InputSuffix>{suffix}</InputSuffix>}
     </InputWrapper>
   )
 }
