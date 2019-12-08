@@ -35,7 +35,7 @@ const Wrapper = styled.article`
 
 interface Props {
   title: string
-  description: string
+  description: string | ReactNode
   demoComponents: ReactNode[]
   demoDisplayStyle?: DemoDisplayStyleTypes
   notes?: ReactNode[]
