@@ -4,6 +4,7 @@ import { ITheme } from '../../styles/theme'
 interface BaseInputProps {
   prefixText?: boolean
   suffixText?: boolean
+  hasButton?: boolean
   theme: ITheme
 }
 
@@ -23,6 +24,8 @@ const BaseInput = styled.input`
     props.suffixText ? '0' : '10px'};
   border: solid 2px ${(props: BaseInputProps) => props.theme.palette.lightGrey};
   transition: all 0.3s ease;
+  padding-right: ${(props: BaseInputProps) =>
+    props.hasButton ? '25px' : '10px'};
 
   :hover {
     border-color: ${(props: BaseInputProps) => props.theme.palette.primary}66;
@@ -51,4 +54,13 @@ const InputSuffix = styled(InputAddon)`
   border-radius: 0 10px 10px 0;
 `
 
-export { BaseInput, InputPrefix, InputSuffix }
+const InputButton = styled.button`
+  display: flex;
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transform: translateX(calc(-100% - 15px));
+`
+
+export { BaseInput, InputPrefix, InputSuffix, InputButton }

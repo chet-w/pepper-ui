@@ -1,19 +1,29 @@
 import React from 'react'
+import { InputButton } from './InputStyles'
 
 interface ShowHidePasswordButtonProps {
-  isShowing: boolean
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>
+  isShowingPassword: boolean
 }
 
 interface ClearInputButtonProps {}
 
 const ShowHidePasswordButton: React.FC<ShowHidePasswordButtonProps> = ({
-  isShowing,
+  setShowPassword,
+  isShowingPassword,
 }) => {
-  return <div>PW</div>
+  return (
+    <InputButton
+      onClick={() => setShowPassword(!isShowingPassword)}
+      title={`${isShowingPassword ? 'Hide' : 'Show'} password`}
+    >
+      👁
+    </InputButton>
+  )
 }
 
 const ClearInputButton: React.FC<ClearInputButtonProps> = () => {
-  return <div>CLEAR</div>
+  return <InputButton>👊</InputButton>
 }
 
 export { ShowHidePasswordButton, ClearInputButton }

@@ -70,9 +70,13 @@ const BasicInput: React.FC<BasicInputProps> = props => {
         {...otherProps}
         prefixText={!!prefixText}
         suffixText={!!suffixText}
+        hasButton={hasShowButton || hasClearButton}
       />
       {type === 'password' && hasShowButton && (
-        <ShowHidePasswordButton isShowing={isShowingPassword} />
+        <ShowHidePasswordButton
+          setShowPassword={setShowPassword.bind(this)}
+          isShowingPassword={isShowingPassword}
+        />
       )}
       {type !== 'password' && hasClearButton && <ClearInputButton />}
       {suffixText && <InputSuffix>{suffixText}</InputSuffix>}
