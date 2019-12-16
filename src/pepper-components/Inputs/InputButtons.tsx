@@ -16,6 +16,7 @@ const ShowHidePasswordButton: React.FC<ShowHidePasswordButtonProps> = ({
     <InputButton
       onClick={() => setShowPassword(!isShowingPassword)}
       title={`${isShowingPassword ? 'Hide' : 'Show'} password`}
+      isActive={isShowingPassword}
     >
       👁
     </InputButton>
@@ -23,7 +24,7 @@ const ShowHidePasswordButton: React.FC<ShowHidePasswordButtonProps> = ({
 }
 
 const ClearInputButton: React.FC<ClearInputButtonProps> = () => {
-  return <InputButton>👊</InputButton>
+  return <InputButton isActive={false}>👊</InputButton>
 }
 
 export { ShowHidePasswordButton, ClearInputButton }

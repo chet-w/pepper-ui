@@ -9,6 +9,7 @@ interface BaseInputProps {
 }
 
 interface AddonProps {
+  isActive: boolean
   theme: ITheme
 }
 
@@ -60,7 +61,23 @@ const InputButton = styled.button`
   border: none;
   padding: 5px;
   cursor: pointer;
+  border-radius: 100px;
+  position: relative;
   transform: translateX(calc(-100% - 15px));
+
+  ::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: ${(props: AddonProps) => props.theme.palette.darkGrey};
+    transform: rotate(-45deg) translateY(-2px)
+      ${(props: AddonProps) => (props.isActive ? 'scale(1)' : 'scale(0)')};
+    transform-origin: top;
+    top: 50%;
+    left: 0;
+    transition: all 0.3s ease;
+  }
 `
 
 export { BaseInput, InputPrefix, InputSuffix, InputButton }
