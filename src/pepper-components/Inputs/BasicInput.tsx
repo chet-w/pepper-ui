@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-import { BaseInput, InputPrefix, InputSuffix } from './InputStyles'
+import {
+  BaseInput,
+  InputPrefix,
+  InputSuffix,
+  InputIconPrefix,
+} from './InputStyles'
+import { PrefixedSelect } from './SelectInput'
 import styled from 'styled-components'
 import { ShowHidePasswordButton, ClearInputButton } from './InputButtons'
+import { ReactNode } from 'react'
 
 const InputWrapper = styled.div`
   display: flex;
@@ -11,6 +18,7 @@ const InputWrapper = styled.div`
     props.labelPlacement === 'top' ? 'initial' : 'center'};
   justify-content: ${(props: InputWrapperProps) =>
     props.labelPlacement === 'top' ? 'initial' : 'center'};
+  position: relative;
 
   & label {
     margin: ${(props: InputWrapperProps) =>
@@ -18,8 +26,9 @@ const InputWrapper = styled.div`
   }
 `
 
-const AddonWrapper = styled.div`
+const InnerWrapper = styled.div`
   display: flex;
+  position: relative;
 `
 
 interface BasicInputProps extends React.HTMLAttributes<HTMLInputElement> {
@@ -33,6 +42,7 @@ interface BasicInputProps extends React.HTMLAttributes<HTMLInputElement> {
   suffixText?: string | string[]
   hasClearButton?: boolean
   hasShowButton?: boolean
+  iconPrefix?: ReactNode | string
 }
 
 interface InputWrapperProps {
@@ -52,34 +62,56 @@ const BasicInput: React.FC<BasicInputProps> = props => {
     hasShowButton,
     prefixText,
     suffixText,
+    iconPrefix,
     labelPlacement,
     ...otherProps
   } = props
 
   const [isShowingPassword, setShowPassword] = useState(false)
+  const [inputContents, setInputContents] = useState('')
 
   return (
     <InputWrapper labelPlacement={labelPlacement ? labelPlacement : 'left'}>
       {label && <label htmlFor={id}>{label}</label>}
-      {prefixText && <InputPrefix>{prefixText}</InputPrefix>}
-      <BaseInput
-        id={id}
-        type={
-          type === 'password' ? (isShowingPassword ? 'text' : 'password') : type
-        }
-        {...otherProps}
-        prefixText={!!prefixText}
-        suffixText={!!suffixText}
-        hasButton={hasShowButton || hasClearButton}
-      />
+      {Array.isArray(prefixText) ? (
+        <PrefixedSelect options={prefixText} />
+      ) : (
+        prefixText && <InputPrefix>{prefixText}</InputPrefix>
+      )}
+      <InnerWrapper>
+        {iconPrefix && <InputIconPrefix>{iconPrefix}</InputIconPrefix>}
+        <BaseInput
+          id={id}
+          type={
+            type === 'password'
+              ? isShowingPassword
+                ? 'text'
+                : 'password'
+              : type
+          }
+          prefixText={!!prefixText}
+          iconPrefix={iconPrefix}
+          suffixText={!!suffixText}
+          hasButton={hasShowButton || hasClearButton}
+          value={inputContents}
+          onChange={event => setInputContents(event.target.value)}
+          {...otherProps}
+        />
+      </InnerWrapper>
       {type === 'password' && hasShowButton && (
         <ShowHidePasswordButton
           setShowPassword={setShowPassword.bind(this)}
           isShowingPassword={isShowingPassword}
         />
       )}
-      {type !== 'password' && hasClearButton && <ClearInputButton />}
-      {suffixText && <InputSuffix>{suffixText}</InputSuffix>}
+      {type !== 'password' && hasClearButton && (
+        <ClearInputButton handleClick={setInputContents.bind(this)} />
+      )}
+      {Array.isArray(suffixText) ? (
+        <PrefixedSelect options={suffixText} />
+      ) : (
+        suffixText && <InputSuffix>{suffixText}</InputSuffix>
+      )}
     </InputWrapper>
   )
 }

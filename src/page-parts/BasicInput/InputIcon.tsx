@@ -24,6 +24,13 @@ const InputIcon: React.FC<Props> = () => {
       }
       demoComponents={[
         <BasicInput
+          id="demo-icon-prefix"
+          placeholder="Username"
+          type="text"
+          label="With an Icon"
+          iconPrefix={'🧑'}
+        />,
+        <BasicInput
           id="demo-text"
           placeholder="You can clear the input"
           type="email"

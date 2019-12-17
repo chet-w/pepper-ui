@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { ITheme } from '../../styles/theme'
 
@@ -5,11 +6,12 @@ interface BaseInputProps {
   prefixText?: boolean
   suffixText?: boolean
   hasButton?: boolean
+  iconPrefix?: ReactNode | string
   theme: ITheme
 }
 
 interface AddonProps {
-  isActive: boolean
+  isActive?: boolean
   theme: ITheme
 }
 
@@ -26,7 +28,9 @@ const BaseInput = styled.input`
   border: solid 2px ${(props: BaseInputProps) => props.theme.palette.lightGrey};
   transition: all 0.3s ease;
   padding-right: ${(props: BaseInputProps) =>
-    props.hasButton ? '25px' : '10px'};
+    props.hasButton ? '30px' : '10px'};
+  padding-left: ${(props: BaseInputProps) =>
+    props.iconPrefix ? '30px' : '10px'};
 
   :hover {
     border-color: ${(props: BaseInputProps) => props.theme.palette.primary}66;
@@ -38,6 +42,15 @@ const BaseInput = styled.input`
       ${(props: BaseInputProps) => props.theme.palette.primary}33;
     outline: none;
   }
+`
+
+const InputIconPrefix = styled.div`
+  filter: grayscale(1);
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  user-select: none;
 `
 
 const InputAddon = styled.div`
@@ -80,4 +93,4 @@ const InputButton = styled.button`
   }
 `
 
-export { BaseInput, InputPrefix, InputSuffix, InputButton }
+export { BaseInput, InputPrefix, InputSuffix, InputButton, InputIconPrefix }

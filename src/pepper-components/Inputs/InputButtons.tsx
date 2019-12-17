@@ -6,7 +6,9 @@ interface ShowHidePasswordButtonProps {
   isShowingPassword: boolean
 }
 
-interface ClearInputButtonProps {}
+interface ClearInputButtonProps {
+  handleClick: React.Dispatch<React.SetStateAction<string>>
+}
 
 const ShowHidePasswordButton: React.FC<ShowHidePasswordButtonProps> = ({
   setShowPassword,
@@ -23,8 +25,12 @@ const ShowHidePasswordButton: React.FC<ShowHidePasswordButtonProps> = ({
   )
 }
 
-const ClearInputButton: React.FC<ClearInputButtonProps> = () => {
-  return <InputButton isActive={false}>👊</InputButton>
+const ClearInputButton: React.FC<ClearInputButtonProps> = ({ handleClick }) => {
+  return (
+    <InputButton onClick={() => handleClick('')} title="Clear input">
+      👊
+    </InputButton>
+  )
 }
 
 export { ShowHidePasswordButton, ClearInputButton }
