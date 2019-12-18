@@ -93,4 +93,50 @@ const InputButton = styled.button`
   }
 `
 
-export { BaseInput, InputPrefix, InputSuffix, InputButton, InputIconPrefix }
+const SelectOptions = styled.ul`
+  position: absolute;
+`
+
+const SelectOption = styled.li``
+
+const BaseSelect = styled.select`
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: solid 2px ${(props: BaseInputProps) => props.theme.palette.lightGrey};
+  transition: all 0.3s ease;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 24px;
+  cursor: pointer;
+`
+
+const SelectAddOn = styled(BaseSelect)`
+  padding: 10px;
+  border: solid 2px ${(props: AddonProps) => props.theme.palette.lightGrey};
+  background: ${(props: AddonProps) => props.theme.palette.lightGrey};
+  color: ${(props: AddonProps) => props.theme.palette.darkGrey};
+`
+
+const SelectPrefix = styled(SelectAddOn)`
+  border-radius: 10px 0 0 10px;
+`
+
+const SelectSuffix = styled(SelectAddOn)`
+  border-radius: 0 10px 10px 0;
+`
+
+export {
+  BaseInput,
+  InputPrefix,
+  InputSuffix,
+  InputButton,
+  InputIconPrefix,
+  BaseSelect,
+  SelectPrefix,
+  SelectSuffix,
+  SelectOptions,
+  SelectOption,
+}

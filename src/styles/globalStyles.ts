@@ -23,6 +23,10 @@ html {
     margin: 0;
     background: #FFFFFF; 
     scroll-behavior: smooth;
+
+    * {
+      line-height: 24px;
+    }
   }
 
   a {
