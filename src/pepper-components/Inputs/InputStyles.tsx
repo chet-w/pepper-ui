@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
+import { useSpring, animated } from 'react-spring'
 import { ITheme } from '../../styles/theme'
 
 interface BaseInputProps {
@@ -93,11 +94,30 @@ const InputButton = styled.button`
   }
 `
 
-const SelectOptions = styled.ul`
+const SelectOptions = styled(animated.ul)`
   position: absolute;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.1);
 `
 
-const SelectOption = styled.li``
+const SelectOption = styled.li`
+  background: ${(props: AddonProps) => props.theme.palette.lightGrey};
+  padding: 10px;
+  color: ${(props: AddonProps) =>
+    props.isActive
+      ? props.theme.palette.primary
+      : props.theme.palette.darkGrey};
+  margin: 0;
+  border-right: ${(props: AddonProps) =>
+    props.isActive ? `solid 2px ${props.theme.palette.primary}` : 'none'};
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props: AddonProps) => props.theme.palette.grey};
+  }
+`
 
 const BaseSelect = styled.select`
   padding: 10px;
@@ -114,7 +134,6 @@ const BaseSelect = styled.select`
 `
 
 const SelectAddOn = styled(BaseSelect)`
-  padding: 10px;
   border: solid 2px ${(props: AddonProps) => props.theme.palette.lightGrey};
   background: ${(props: AddonProps) => props.theme.palette.lightGrey};
   color: ${(props: AddonProps) => props.theme.palette.darkGrey};
