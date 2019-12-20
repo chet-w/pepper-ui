@@ -100,22 +100,34 @@ const SelectOptions = styled(animated.ul)`
   width: 100%;
   margin: 0;
   box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    outline: none;
+  }
 `
 
 const SelectOption = styled.li`
-  background: ${(props: AddonProps) => props.theme.palette.lightGrey};
-  padding: 10px;
-  color: ${(props: AddonProps) =>
-    props.isActive
-      ? props.theme.palette.primary
-      : props.theme.palette.darkGrey};
   margin: 0;
   border-right: ${(props: AddonProps) =>
     props.isActive ? `solid 2px ${props.theme.palette.primary}` : 'none'};
-  cursor: pointer;
 
-  &:hover {
-    background: ${(props: AddonProps) => props.theme.palette.grey};
+  & button {
+    background: ${(props: AddonProps) => props.theme.palette.lightGrey};
+    padding: 10px;
+    width: 100%;
+    color: ${(props: AddonProps) =>
+      props.isActive
+        ? props.theme.palette.primary
+        : props.theme.palette.darkGrey};
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: ${(props: AddonProps) => props.theme.palette.grey};
+    }
   }
 `
 
@@ -137,6 +149,12 @@ const SelectAddOn = styled(BaseSelect)`
   border: solid 2px ${(props: AddonProps) => props.theme.palette.lightGrey};
   background: ${(props: AddonProps) => props.theme.palette.lightGrey};
   color: ${(props: AddonProps) => props.theme.palette.darkGrey};
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    color: ${(props: AddonProps) => props.theme.palette.primary};
+  }
 `
 
 const SelectPrefix = styled(SelectAddOn)`

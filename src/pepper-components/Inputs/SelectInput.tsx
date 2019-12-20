@@ -20,7 +20,7 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
   const selectOptionsRef = useRef(null)
 
   useClickOutside(selectOptionsRef, () => {
-    closeOptionsFromOutside.bind(this)
+    closeOptionsFromOutside()
   })
 
   const handleSuffixClick = (
@@ -36,11 +36,14 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
   }
 
   const closeOptionsFromOutside = () => {
-    setOptionsOpen(false)
+    if (areOptionsOpen) {
+      setOptionsOpen(false)
+    }
   }
 
   const FadeInAnimation = useSpring({
     opacity: areOptionsOpen ? 1 : 0,
+    pointerEvents: areOptionsOpen ? 'all' : 'none',
     transform: areOptionsOpen ? 'translateY(0)' : 'translateY(-10px)',
   })
 
@@ -58,12 +61,10 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
       </SelectSuffix>
       <SelectOptions style={FadeInAnimation} ref={selectOptionsRef}>
         {options.map(option => (
-          <SelectOption
-            onClick={() => handleOptionClick(option)}
-            value={option}
-            isActive={option === selectedOption}
-          >
-            {option}
+          <SelectOption isActive={option === selectedOption}>
+            <button onClick={() => handleOptionClick(option)} value={option}>
+              {option}
+            </button>
           </SelectOption>
         ))}
       </SelectOptions>
