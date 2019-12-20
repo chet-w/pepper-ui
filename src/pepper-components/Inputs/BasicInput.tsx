@@ -5,7 +5,7 @@ import {
   InputSuffix,
   InputIconPrefix,
 } from './InputStyles'
-import { PrefixedSelect } from './SelectInput'
+import { SuffixSelect } from './SelectInput'
 import styled from 'styled-components'
 import { ShowHidePasswordButton, ClearInputButton } from './InputButtons'
 import { ReactNode } from 'react'
@@ -74,7 +74,7 @@ const BasicInput: React.FC<BasicInputProps> = props => {
     <InputWrapper labelPlacement={labelPlacement ? labelPlacement : 'left'}>
       {label && <label htmlFor={id}>{label}</label>}
       {Array.isArray(prefixText) ? (
-        <PrefixedSelect options={prefixText} />
+        <SuffixSelect options={prefixText} />
       ) : (
         prefixText && <InputPrefix>{prefixText}</InputPrefix>
       )}
@@ -108,7 +108,7 @@ const BasicInput: React.FC<BasicInputProps> = props => {
         <ClearInputButton handleClick={setInputContents.bind(this)} />
       )}
       {Array.isArray(suffixText) ? (
-        <PrefixedSelect options={suffixText} />
+        <SuffixSelect options={suffixText} />
       ) : (
         suffixText && <InputSuffix>{suffixText}</InputSuffix>
       )}

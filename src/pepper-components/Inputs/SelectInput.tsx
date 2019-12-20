@@ -3,18 +3,23 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useSpring } from 'react-spring'
 
-import { SelectSuffix, SelectOption, SelectOptions } from './InputStyles'
+import {
+  SelectSuffix,
+  SelectOption,
+  SelectOptions,
+  BaseSelect,
+} from './InputStyles'
 import useClickOutside from '../_helpers/useClickOutside'
 
 const SelectWrapper = styled.div`
   position: relative;
 `
 
-interface PrefixedSelectProps {
+interface SuffixSelectProps {
   options: string[]
 }
 
-const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
+const SuffixSelect: React.FC<SuffixSelectProps> = ({ options }) => {
   const [areOptionsOpen, setOptionsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(options[0])
   const selectOptionsRef = useRef(null)
@@ -49,7 +54,7 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
 
   return (
     <SelectWrapper>
-      <SelectSuffix
+      <BaseSelect
         onClick={event => handleSuffixClick(event)}
         value={selectedOption}
       >
@@ -58,7 +63,7 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
             {option}
           </option>
         ))}
-      </SelectSuffix>
+      </BaseSelect>
       <SelectOptions style={FadeInAnimation} ref={selectOptionsRef}>
         {options.map(option => (
           <SelectOption isActive={option === selectedOption}>
@@ -72,4 +77,4 @@ const PrefixedSelect: React.FC<PrefixedSelectProps> = ({ options }) => {
   )
 }
 
-export { PrefixedSelect }
+export { SuffixSelect }

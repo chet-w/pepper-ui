@@ -11,6 +11,7 @@ import Heading from '../../pepper-components/Headings/index'
 import APITable from '../../components/APITable'
 import InputPrefixSuffix from '../../page-parts/BasicInput/InputPrefixSuffix'
 import InputIcon from '../../page-parts/BasicInput/InputIcon'
+import SelectInput from '../../page-parts/BasicInput/SelectInput'
 
 interface BasicInputPageProps {
   location: {
@@ -32,6 +33,7 @@ export default ({ location }: BasicInputPageProps) => (
       <InputTypes />
       <InputPrefixSuffix />
       <InputIcon />
+      <SelectInput />
       <APITable
         title="API"
         header={['Prop', 'Description', 'Type', 'Options', 'Default']}
